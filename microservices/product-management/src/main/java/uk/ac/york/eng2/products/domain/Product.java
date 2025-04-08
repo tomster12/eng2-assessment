@@ -1,10 +1,12 @@
 package uk.ac.york.eng2.products.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.micronaut.serde.annotation.Serdeable;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Serdeable
 @Entity
@@ -17,7 +19,10 @@ public class Product {
     private String name;
 
     @Column
-    private float unitPrice;
+    private BigDecimal unit_price;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Tag> tags = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -35,11 +40,19 @@ public class Product {
         this.name = name;
     }
 
-    public float getUnitPrice() {
-        return unitPrice;
+    public BigDecimal getUnitPrice() {
+        return unit_price;
     }
 
-    public void setUnitPrice(float unitPrice) {
-        this.unitPrice = unitPrice;
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unit_price = unitPrice;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
     }
 }
