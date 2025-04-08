@@ -4,44 +4,113 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.*;
 import io.micronaut.http.exceptions.HttpStatusException;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import uk.ac.york.eng2.products.domain.Product;
 import uk.ac.york.eng2.products.domain.Tag;
+import uk.ac.york.eng2.products.dto.OrderRequestDTO;
+import uk.ac.york.eng2.products.dto.OrderResponseDTO;
 import uk.ac.york.eng2.products.dto.ProductCreateDTO;
+import uk.ac.york.eng2.products.dto.ProductUpdateDTO;
 import uk.ac.york.eng2.products.repository.ProductsRepository;
 import uk.ac.york.eng2.products.repository.TagsRepository;
 
+import java.math.BigDecimal;
 import java.net.URI;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Controller("/products")
 public class ProductsController {
     @Inject
-    ProductsRepository repo;
+    ProductsRepository productRepo;
 
     @Inject
     TagsRepository tagsRepo;
 
     @Transactional
+    @Get
+    public List<Product> getProducts() {
+        return productRepo.findAll();
+    }
+
+    @Transactional
+    @Get("/{id}")
+    public Product getProduct(@PathVariable Long id) {
+        return productRepo.findById(id).orElse(null);
+    }
+
+    @Transactional
     @Post
     public HttpResponse<Void> createProduct(@Body ProductCreateDTO productCreateDTO) {
-        // Create product and save
+        if (productRepo.existsByName(productCreateDTO.getName())) return HttpResponse.status(HttpStatus.CONFLICT);
+
         Product product = new Product();
         product.setName(productCreateDTO.getName());
         product.setUnitPrice(productCreateDTO.getUnitPrice());
-        product = repo.save(product);
+        product = productRepo.save(product);
 
-        // Find or create relevant tags
+        Set<Tag> tags = getTags(productCreateDTO.getTags());
+        product.setTags(tags);
+        productRepo.save(product);
+
+        return HttpResponse.created(URI.create("/products/" + product.getId()));
+    }
+
+    @Transactional
+    @Put("/{id}")
+    public HttpResponse<Void> updateProduct(@Body ProductUpdateDTO productUpdateDTO, @PathVariable Long id) {
+        Optional<Product> optProduct = productRepo.findById(id);
+        if (optProduct.isEmpty()) throw new HttpStatusException(HttpStatus.NOT_FOUND, "Product not found");
+
+        Product product = optProduct.get();
+        product.setUnitPrice(productUpdateDTO.getUnitPrice());
+        Set<Tag> tags = getTags(productUpdateDTO.getTags());
+        product.setTags(tags);
+        productRepo.save(product);
+
+        return HttpResponse.ok();
+    }
+
+    @Delete("/{id}")
+    public HttpResponse<Void> deleteProduct(@PathVariable Long id) {
+        if (!productRepo.existsById(id)) throw new HttpStatusException(HttpStatus.NOT_FOUND, "Product not found");
+        productRepo.deleteById(id);
+        return HttpResponse.ok();
+    }
+
+    @Transactional
+    @Put("/order")
+    public OrderResponseDTO calculateOrder(@Body OrderRequestDTO requestDTO) {
+        OrderResponseDTO responseDTO = new OrderResponseDTO();
+        Map<Long, Integer> productQuantities = requestDTO.getProductQuantities();
+        Map<Long, BigDecimal> productPrices = new HashMap<>();
+        BigDecimal totalPrice = BigDecimal.ZERO;
+
+        for (Long productId : productQuantities.keySet()) {
+            Optional<Product> optProduct = productRepo.findById(productId);
+            if (optProduct.isEmpty()) throw new HttpStatusException(HttpStatus.NOT_FOUND, "Product not found");
+            Product product = optProduct.get();
+
+            BigDecimal linePrice = product.getUnitPrice().multiply(BigDecimal.valueOf(productQuantities.get(productId)));
+            productPrices.put(productId, linePrice);
+            totalPrice = totalPrice.add(linePrice);
+        }
+
+        responseDTO.setItemPrices(productPrices);
+        responseDTO.setTotalPrice(totalPrice);
+
+        // TODO: Apply offers to the response DTO
+
+        return responseDTO;
+    }
+
+    private Set<Tag> getTags(Set<String> tagNames) {
         Set<Tag> tags = new HashSet<>();
-        for (String tagName : productCreateDTO.getTags()) {
-            Optional<Tag> oTag = tagsRepo.findByName(tagName);
-            if (oTag.isPresent()) {
-                tags.add(oTag.get());
+
+        for (String tagName : tagNames) {
+            Optional<Tag> optTag = tagsRepo.findByName(tagName);
+            if (optTag.isPresent()) {
+                tags.add(optTag.get());
             } else {
                 Tag tag = new Tag();
                 tag.setName(tagName);
@@ -50,40 +119,6 @@ public class ProductsController {
             }
         }
 
-        // Assign tags and save
-        product.setTags(tags);
-        repo.save(product);
-
-        return HttpResponse.created(URI.create("/products/" + product.getId()));
-    }
-
-    @Transactional
-    @Get
-    public List<Product> getProducts() {
-        return repo.findAll();
-    }
-
-    @Transactional
-    @Get("/{id}")
-    public Product getProduct(@PathVariable Long id) {
-        return repo.findById(id).orElse(null);
-    }
-
-    @Transactional
-    @Put("/{id}")
-    public void updateProduct(@PathVariable Long id, @RequestBody ProductCreateDTO productCreateDTO) {
-        Optional<Product> oProduct = repo.findById(id);
-        if (oProduct.isEmpty()) throw new HttpStatusException(HttpStatus.NOT_FOUND, "Product not found");
-
-        Product product = oProduct.get();
-        product.setName(productCreateDTO.getName());
-        product.setUnitPrice(productCreateDTO.getUnitPrice());
-        repo.save(product);
-    }
-
-    @Delete("/{id}")
-    public void deleteProduct(@PathVariable Long id) {
-        if (!repo.existsById(id)) throw new HttpStatusException(HttpStatus.NOT_FOUND, "Product not found");
-        repo.deleteById(id);
+        return tags;
     }
 }

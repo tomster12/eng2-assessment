@@ -3,13 +3,13 @@ package uk.ac.york.eng2.products.dto;
 import io.micronaut.serde.annotation.Serdeable;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Set;
 
 @Serdeable
 public class ProductCreateDTO {
     private String name;
     private BigDecimal unitPrice;
-    private List<String> tags;
+    private Set<String> tags;
 
     public String getName() {
         return name;
@@ -27,11 +27,11 @@ public class ProductCreateDTO {
         this.unitPrice = unitPrice;
     }
 
-    public List<String> getTags() {
+    public Set<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(Set<String> tags) {
         this.tags = tags;
     }
 }
