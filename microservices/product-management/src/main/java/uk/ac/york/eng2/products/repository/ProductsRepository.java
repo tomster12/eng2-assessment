@@ -9,5 +9,6 @@ import java.util.Optional;
 @Repository
 public interface ProductsRepository extends PageableRepository<Product, Long> {
     Optional<Product> findByName(String name);
+
     boolean existsByName(String name);
 }

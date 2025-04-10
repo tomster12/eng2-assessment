@@ -15,7 +15,7 @@ public class Tag {
     @GeneratedValue
     private Long id;
 
-    @Column
+    @Column(nullable = false, unique = true, length = 255)
     private String name;
 
     @JsonIgnore

@@ -6,13 +6,13 @@ import java.util.Map;
 
 @Serdeable
 public class OrderRequestDTO {
-    private Map<Long, Integer> productQuantities;
+    private Map<String, Long> productQuantities;
 
-    public Map<Long, Integer> getProductQuantities() {
+    public Map<String, Long> getProductQuantities() {
         return productQuantities;
     }
 
-    public void setProductQuantities(Map<Long, Integer> productQuantities) {
+    public void setProductQuantities(Map<String, Long> productQuantities) {
         this.productQuantities = productQuantities;
     }
 }

@@ -4,7 +4,6 @@ import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.repository.PageableRepository;
 import uk.ac.york.eng2.products.domain.Tag;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository

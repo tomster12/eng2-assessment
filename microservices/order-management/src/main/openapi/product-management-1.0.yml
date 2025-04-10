@@ -1,0 +1,185 @@
+openapi: 3.0.1
+info:
+  title: product-management
+  version: "1.0"
+paths:
+  /products:
+    get:
+      tags:
+      - Products
+      operationId: getProducts
+      responses:
+        "200":
+          description: getProducts 200 response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+    post:
+      tags:
+      - Products
+      operationId: createProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductCreateDTO"
+        required: true
+      responses:
+        "200":
+          description: createProduct 200 response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+  /products/order:
+    put:
+      tags:
+      - Products
+      operationId: calculateOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderRequestDTO"
+        required: true
+      responses:
+        "200":
+          description: calculateOrder 200 response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderResponseDTO"
+  /products/{id}:
+    get:
+      tags:
+      - Products
+      operationId: getProduct
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: getProduct 200 response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+    put:
+      tags:
+      - Products
+      operationId: updateProduct
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductUpdateDTO"
+        required: true
+      responses:
+        "200":
+          description: updateProduct 200 response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+    delete:
+      tags:
+      - Products
+      operationId: deleteProduct
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: deleteProduct 200 response
+components:
+  schemas:
+    OrderRequestDTO:
+      type: object
+      properties:
+        productQuantities:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int64
+    OrderResponseDTO:
+      type: object
+      properties:
+        productPrices:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductPriceDTO"
+        totalPrice:
+          type: number
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          nullable: true
+        name:
+          type: string
+        unitPrice:
+          minimum: 0
+          type: number
+        tags:
+          type: array
+          items:
+            $ref: "#/components/schemas/Tag"
+    ProductCreateDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        unitPrice:
+          type: number
+        tags:
+          type: array
+          items:
+            type: string
+    ProductPriceDTO:
+      type: object
+      properties:
+        productId:
+          type: integer
+          format: int64
+        productName:
+          type: string
+        unitPrice:
+          type: number
+    ProductUpdateDTO:
+      type: object
+      properties:
+        unitPrice:
+          type: number
+        tags:
+          type: array
+          items:
+            type: string
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          nullable: true
+        name:
+          type: string

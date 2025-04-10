@@ -1,8 +1,8 @@
 package uk.ac.york.eng2.products.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.micronaut.serde.annotation.Serdeable;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -15,11 +15,12 @@ public class Product {
     @GeneratedValue
     private Long id;
 
-    @Column
+    @Column(nullable = false, length = 255)
     private String name;
 
-    @Column
-    private BigDecimal unit_price;
+    @Column(nullable = false, precision = 12, scale = 2)
+    @DecimalMin("0.00")
+    private BigDecimal unitPrice;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Tag> tags = new HashSet<>();
@@ -41,11 +42,11 @@ public class Product {
     }
 
     public BigDecimal getUnitPrice() {
-        return unit_price;
+        return unitPrice;
     }
 
     public void setUnitPrice(BigDecimal unitPrice) {
-        this.unit_price = unitPrice;
+        this.unitPrice = unitPrice;
     }
 
     public Set<Tag> getTags() {

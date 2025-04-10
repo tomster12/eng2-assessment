@@ -3,19 +3,20 @@ package uk.ac.york.eng2.products.dto;
 import io.micronaut.serde.annotation.Serdeable;
 
 import java.math.BigDecimal;
-import java.util.Map;
+import java.util.List;
 
 @Serdeable
 public class OrderResponseDTO {
-    private Map<Long, BigDecimal> itemPrices;
+
+    private List<ProductPriceDTO> productPrices;
     private BigDecimal totalPrice;
 
-    public Map<Long, BigDecimal> getItemPrices() {
-        return itemPrices;
+    public List<ProductPriceDTO> getProductPrices() {
+        return productPrices;
     }
 
-    public void setItemPrices(Map<Long, BigDecimal> itemPrices) {
-        this.itemPrices = itemPrices;
+    public void setProductPrices(List<ProductPriceDTO> productPrices) {
+        this.productPrices = productPrices;
     }
 
     public BigDecimal getTotalPrice() {
