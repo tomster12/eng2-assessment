@@ -25,7 +25,7 @@ public class Customer {
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer")
-    private List<Orders> orders;
+    private List<Order> order;
 
     public Long getId() {
         return id;
@@ -59,11 +59,11 @@ public class Customer {
         this.familyName = phone;
     }
 
-    public List<Orders> getOrders() {
-        return orders;
+    public List<Order> getOrder() {
+        return order;
     }
 
-    public void setOrders(List<Orders> orders) {
-        this.orders = orders;
+    public void setOrder(List<Order> order) {
+        this.order = order;
     }
 }

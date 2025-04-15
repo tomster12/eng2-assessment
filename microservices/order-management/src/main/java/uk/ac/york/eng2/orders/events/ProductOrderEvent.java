@@ -1,0 +1,9 @@
+package uk.ac.york.eng2.orders.events;
+
+import io.micronaut.serde.annotation.Serdeable;
+
+import java.time.LocalDate;
+
+@Serdeable
+public record ProductOrderEvent(long productId, long quantity, LocalDate date) {
+}

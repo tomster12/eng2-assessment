@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Serdeable
-public class OrderResponseDTO {
+public class OrderPriceResponseDTO {
 
     private List<ProductPriceDTO> productPrices;
     private BigDecimal totalPrice;

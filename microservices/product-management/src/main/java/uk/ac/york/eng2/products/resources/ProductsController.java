@@ -16,8 +16,10 @@ import java.math.BigDecimal;
 import java.util.*;
 
 @io.swagger.v3.oas.annotations.tags.Tag(name = "Products")
-@Controller("/products")
+@Controller(ProductsController.PREFIX)
 public class ProductsController {
+    public static final String PREFIX = "/products";
+
     @Inject
     private ProductsRepository productRepo;
 
@@ -77,12 +79,12 @@ public class ProductsController {
 
     @Transactional
     @Put("/order")
-    public OrderResponseDTO calculateOrder(@Body OrderRequestDTO requestDTO) {
-        Map<String, Long> productQuantities = requestDTO.getProductQuantities();
+    public OrderPriceResponseDTO priceOrder(@Body OrderPriceRequestDTO priceRequestDTO) {
+        Map<String, Long> productQuantities = priceRequestDTO.getProductQuantities();
 
         // TODO: Apply offers to the response DTO
 
-        OrderResponseDTO responseDTO = new OrderResponseDTO();
+        OrderPriceResponseDTO priceResponseDTO = new OrderPriceResponseDTO();
         List<ProductPriceDTO> productPrices = new ArrayList<>();
         BigDecimal totalPrice = BigDecimal.ZERO;
 
@@ -102,10 +104,10 @@ public class ProductsController {
             productPrices.add(productPriceDTO);
         }
 
-        responseDTO.setProductPrices(productPrices);
-        responseDTO.setTotalPrice(totalPrice);
+        priceResponseDTO.setProductPrices(productPrices);
+        priceResponseDTO.setTotalPrice(totalPrice);
 
-        return responseDTO;
+        return priceResponseDTO;
     }
 
     private Set<Tag> getTags(Set<String> tagNames) {

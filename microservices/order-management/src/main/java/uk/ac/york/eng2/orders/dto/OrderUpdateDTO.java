@@ -5,9 +5,7 @@ import io.micronaut.serde.annotation.Serdeable;
 import java.util.Map;
 
 @Serdeable
-public class OrderCreateDTO {
-    private Long customerId;
-
+public class OrderUpdateDTO {
     private String address;
 
     private Map<String, Long> productQuantities;
@@ -18,14 +16,6 @@ public class OrderCreateDTO {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
     }
 
     public Map<String, Long> getProductQuantities() {

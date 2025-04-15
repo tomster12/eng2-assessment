@@ -5,7 +5,7 @@ import io.micronaut.serde.annotation.Serdeable;
 import java.util.Map;
 
 @Serdeable
-public class OrderRequestDTO {
+public class OrderPriceRequestDTO {
     private Map<String, Long> productQuantities;
 
     public Map<String, Long> getProductQuantities() {

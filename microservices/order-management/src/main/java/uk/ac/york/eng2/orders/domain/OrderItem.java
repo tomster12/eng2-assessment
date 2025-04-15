@@ -21,7 +21,7 @@ public class OrderItem {
     @JsonBackReference(value = "order-items")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false)
-    private Orders orders;
+    private Order order;
 
     @Column(nullable = false)
     @Min(1)
@@ -46,12 +46,12 @@ public class OrderItem {
         this.productId = productId;
     }
 
-    public Orders getOrders() {
-        return orders;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrders(Orders orders) {
-        this.orders = orders;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public Long getQuantity() {

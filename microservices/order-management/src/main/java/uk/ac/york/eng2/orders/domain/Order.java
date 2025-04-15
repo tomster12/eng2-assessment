@@ -1,25 +1,26 @@
 package uk.ac.york.eng2.orders.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.micronaut.serde.annotation.Serdeable;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 @Serdeable
 @Entity
 @Table(name = "orders")
-public class Orders {
+public class Order {
     @Id
     @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date dateCreated;
+    private LocalDate dateCreated;
 
     @Column(nullable = false)
     private String address;
@@ -39,7 +40,7 @@ public class Orders {
     private Customer customer;
 
     @JsonManagedReference(value = "order-items")
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<OrderItem> orderItems;
 
     public Long getId() {
@@ -50,11 +51,11 @@ public class Orders {
         this.id = id;
     }
 
-    public Date getDateCreated() {
+    public LocalDate getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(Date dateCreated) {
+    public void setDateCreated(LocalDate dateCreated) {
         this.dateCreated = dateCreated;
     }
 

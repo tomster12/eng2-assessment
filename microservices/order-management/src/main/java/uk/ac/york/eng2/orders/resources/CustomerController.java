@@ -7,6 +7,7 @@ import io.micronaut.http.exceptions.HttpStatusException;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import uk.ac.york.eng2.orders.domain.Customer;
+import uk.ac.york.eng2.orders.domain.Order;
 import uk.ac.york.eng2.orders.dto.CustomerCreateDTO;
 import uk.ac.york.eng2.orders.dto.CustomerUpdateDTO;
 import uk.ac.york.eng2.orders.repository.CustomerRepository;
@@ -26,7 +27,9 @@ public class CustomerController {
 
     @Get("/{id}")
     public Customer getCustomer(@PathVariable Long id) {
-        return repo.findById(id).orElse(null);
+        Optional<Customer> optCustomer = repo.findById(id);
+        if (optCustomer.isPresent()) return optCustomer.get();
+        throw new HttpStatusException(HttpStatus.NOT_FOUND, "Customer not found");
     }
 
     @Transactional
