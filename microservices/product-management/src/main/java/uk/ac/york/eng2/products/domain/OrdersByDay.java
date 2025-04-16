@@ -12,7 +12,7 @@ public class OrdersByDay {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Product product;
 
     @Column(nullable = false)

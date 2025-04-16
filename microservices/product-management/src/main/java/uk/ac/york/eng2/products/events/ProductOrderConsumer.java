@@ -25,9 +25,9 @@ public class ProductOrderConsumer {
     void orderPlaced(@KafkaKey long id, ProductOrderEvent productOrderEvent) {
         System.out.println("OrderPlaced: " + productOrderEvent);
 
-        Optional<Product> optProduct = productsRepo.findById(id);
+        Optional<Product> optProduct = productsRepo.findById(productOrderEvent.productId());
         if (optProduct.isEmpty()) {
-            throw new IllegalArgumentException("No product found with id: " + id);
+            throw new IllegalArgumentException("No product found with id: " + productOrderEvent.productId());
         }
 
         Product product = optProduct.get();
@@ -42,7 +42,9 @@ public class ProductOrderConsumer {
             ordersByDay.setProduct(product);
             ordersByDay.setDay(productOrderEvent.date());
             ordersByDay.setCount(productOrderEvent.quantity());
-            ordersByDayRepo.save(ordersByDay);
+            ordersByDay = ordersByDayRepo.save(ordersByDay);
+
+            System.out.println("OrderPlaced: " + ordersByDay);
         }
     }
 }

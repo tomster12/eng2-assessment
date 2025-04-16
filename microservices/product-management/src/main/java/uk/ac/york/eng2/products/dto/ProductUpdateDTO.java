@@ -3,12 +3,13 @@ package uk.ac.york.eng2.products.dto;
 import io.micronaut.serde.annotation.Serdeable;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 @Serdeable
 public class ProductUpdateDTO {
     private BigDecimal unitPrice;
-    private Set<String> tags;
+    private Set<String> tags = new HashSet<>();
 
     public BigDecimal getUnitPrice() {
         return unitPrice;

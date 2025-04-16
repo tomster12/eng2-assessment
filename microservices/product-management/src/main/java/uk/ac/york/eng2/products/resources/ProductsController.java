@@ -3,12 +3,13 @@ package uk.ac.york.eng2.products.resources;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.*;
-import io.micronaut.http.exceptions.HttpStatusException;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import uk.ac.york.eng2.products.domain.OrdersByDay;
 import uk.ac.york.eng2.products.domain.Product;
 import uk.ac.york.eng2.products.domain.Tag;
 import uk.ac.york.eng2.products.dto.*;
+import uk.ac.york.eng2.products.repository.OrdersByDayRepository;
 import uk.ac.york.eng2.products.repository.ProductsRepository;
 import uk.ac.york.eng2.products.repository.TagsRepository;
 
@@ -24,6 +25,9 @@ public class ProductsController {
     private ProductsRepository productRepo;
 
     @Inject
+    private OrdersByDayRepository ordersByDayRepo;
+
+    @Inject
     private TagsRepository tagsRepo;
 
     @Get
@@ -32,16 +36,31 @@ public class ProductsController {
     }
 
     @Get("/{id}")
-    public Product getProduct(@PathVariable Long id) {
-        return productRepo.findById(id).orElse(null);
+    public HttpResponse<Product> getProduct(@PathVariable Long id) {
+        Optional<Product> optProduct = productRepo.findById(id);
+        if (optProduct.isEmpty()) return HttpResponse.notFound();
+        return HttpResponse.ok(optProduct.get());
+    }
+
+    @Post("/daily/{id}")
+    public HttpResponse<OrdersByDay> getProductDailyOrders(@PathVariable Long id, @Body OrdersByDayRequestDTO ordersByDayRequestDTO) {
+        Optional<Product> optProduct = productRepo.findById(id);
+        if (optProduct.isEmpty()) return HttpResponse.notFound();
+        Product product = optProduct.get();
+
+        Optional<OrdersByDay> optOrdersByDay = ordersByDayRepo.findByProductAndDay(product, ordersByDayRequestDTO.getDay());
+        if (optOrdersByDay.isEmpty()) return HttpResponse.notFound();
+        return HttpResponse.ok(optOrdersByDay.get());
     }
 
     @Transactional
     @Post
-    public Product createProduct(@Body ProductCreateDTO productCreateDTO) {
+    public HttpResponse<Product> createProduct(@Body ProductCreateDTO productCreateDTO) {
         if (productRepo.existsByName(productCreateDTO.getName())) {
-            throw new HttpStatusException(HttpStatus.CONFLICT, "Product name already exists");
+            return HttpResponse.status(HttpStatus.CONFLICT);
         }
+
+        System.out.println(productCreateDTO.getName());
 
         Product product = new Product();
         product.setName(productCreateDTO.getName());
@@ -50,24 +69,24 @@ public class ProductsController {
 
         Set<Tag> tags = getTags(productCreateDTO.getTags());
         product.setTags(tags);
-        return productRepo.save(product);
+        product = productRepo.save(product);
+
+        return HttpResponse.created(product);
     }
 
     @Transactional
     @Put("/{id}")
-    public Product updateProduct(@Body ProductUpdateDTO productUpdateDTO, @PathVariable Long id) {
+    public HttpResponse<Product> updateProduct(@PathVariable Long id, @Body ProductUpdateDTO productUpdateDTO) {
         Optional<Product> optProduct = productRepo.findById(id);
-        if (optProduct.isEmpty()) {
-            throw new HttpStatusException(HttpStatus.NOT_FOUND, "Product not found");
-        }
-
+        if (optProduct.isEmpty()) return HttpResponse.notFound();
         Product product = optProduct.get();
+
         product.setUnitPrice(productUpdateDTO.getUnitPrice());
         Set<Tag> tags = getTags(productUpdateDTO.getTags());
         product.setTags(tags);
         productRepo.save(product);
 
-        return product;
+        return HttpResponse.ok(product);
     }
 
     @Delete("/{id}")
@@ -79,7 +98,7 @@ public class ProductsController {
 
     @Transactional
     @Put("/order")
-    public OrderPriceResponseDTO priceOrder(@Body OrderPriceRequestDTO priceRequestDTO) {
+    public HttpResponse<OrderPriceResponseDTO> priceOrder(@Body OrderPriceRequestDTO priceRequestDTO) {
         Map<String, Long> productQuantities = priceRequestDTO.getProductQuantities();
 
         // TODO: Apply offers to the response DTO
@@ -90,7 +109,7 @@ public class ProductsController {
 
         for (String productName : productQuantities.keySet()) {
             Optional<Product> optProduct = productRepo.findByName(productName);
-            if (optProduct.isEmpty()) throw new HttpStatusException(HttpStatus.NOT_FOUND, "Product not found");
+            if (optProduct.isEmpty()) return HttpResponse.notFound();
             Product product = optProduct.get();
 
             ProductPriceDTO productPriceDTO = new ProductPriceDTO();
@@ -107,22 +126,22 @@ public class ProductsController {
         priceResponseDTO.setProductPrices(productPrices);
         priceResponseDTO.setTotalPrice(totalPrice);
 
-        return priceResponseDTO;
+        return HttpResponse.ok(priceResponseDTO);
     }
 
     private Set<Tag> getTags(Set<String> tagNames) {
         Set<Tag> tags = new HashSet<>();
 
         for (String tagName : tagNames) {
-            Optional<Tag> optTag = tagsRepo.findByName(tagName);
-            if (optTag.isPresent()) {
-                tags.add(optTag.get());
-            } else {
-                Tag tag = new Tag();
+            Tag tag = tagsRepo.findByName(tagName).orElse(null);
+
+            if (tag == null) {
+                tag = new Tag();
                 tag.setName(tagName);
                 tag = tagsRepo.save(tag);
-                tags.add(tag);
             }
+
+            tags.add(tag);
         }
 
         return tags;

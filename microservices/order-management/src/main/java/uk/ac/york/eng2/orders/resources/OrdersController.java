@@ -17,7 +17,6 @@ import uk.ac.york.eng2.orders.domain.Order;
 import uk.ac.york.eng2.orders.domain.OrderItem;
 import uk.ac.york.eng2.orders.dto.OrderCreateDTO;
 import uk.ac.york.eng2.orders.dto.OrderUpdateDTO;
-import uk.ac.york.eng2.orders.events.ProductOrderEvent;
 import uk.ac.york.eng2.orders.events.ProductOrderProducer;
 import uk.ac.york.eng2.orders.repository.CustomerRepository;
 import uk.ac.york.eng2.orders.repository.OrdersRepository;

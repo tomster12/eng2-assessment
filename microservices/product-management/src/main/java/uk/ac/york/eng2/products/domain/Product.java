@@ -6,6 +6,7 @@ import jakarta.validation.constraints.DecimalMin;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Serdeable
@@ -24,6 +25,9 @@ public class Product {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Tag> tags = new HashSet<>();
+
+    @OneToMany(mappedBy = "product")
+    private List<OrdersByDay> ordersByDay;
 
     public Long getId() {
         return id;
