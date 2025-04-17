@@ -1,28 +1,30 @@
 package uk.ac.york.eng2.orders.dto;
 
 import io.micronaut.serde.annotation.Serdeable;
+import jakarta.persistence.Column;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Serdeable
 public class OrderUpdateDTO {
-    private String address;
+    private boolean paid;
 
-    private Map<String, Long> productQuantities;
+    private boolean delivered;
 
-    public String getAddress() {
-        return address;
+    public boolean isPaid() {
+        return paid;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 
-    public Map<String, Long> getProductQuantities() {
-        return productQuantities;
+    public boolean isDelivered() {
+        return delivered;
     }
 
-    public void setProductQuantities(Map<String, Long> productQuantities) {
-        this.productQuantities = productQuantities;
+    public void setDelivered(boolean delivered) {
+        this.delivered = delivered;
     }
 }

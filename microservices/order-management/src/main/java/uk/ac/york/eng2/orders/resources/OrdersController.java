@@ -25,8 +25,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
 
-@Controller("/orders")
+@Controller(OrdersController.PREFIX)
 public class OrdersController {
+    public static final String PREFIX = "/orders";
+
     @Inject
     private CustomerRepository customersRepo;
 
@@ -45,53 +47,52 @@ public class OrdersController {
     }
 
     @Get("/{id}")
-    public Order getOrder(@PathVariable Long id) {
+    public HttpResponse<Order> getOrder(@PathVariable Long id) {
         Optional<Order> optOrder = ordersRepo.findById(id);
-        if (optOrder.isPresent()) return optOrder.get();
-        throw new HttpStatusException(HttpStatus.NOT_FOUND, "Order not found");
+        if (optOrder.isEmpty()) return HttpResponse.notFound();
+        return HttpResponse.ok(optOrder.get());
     }
 
     @ExecuteOn(TaskExecutors.BLOCKING)
     @Transactional
     @Post
-    public Order createOrder(@Body OrderCreateDTO orderCreateDTO) {
+    public HttpResponse<Order> createOrder(@Body OrderCreateDTO orderCreateDTO) {
         Optional<Customer> optCustomer = customersRepo.findById(orderCreateDTO.getCustomerId());
-        if (optCustomer.isEmpty()) {
-            throw new HttpStatusException(HttpStatus.NOT_FOUND, "Customer not found");
-        }
+        if (optCustomer.isEmpty()) return HttpResponse.notFound();
+        Customer customer = optCustomer.get();
 
         Order order = new Order();
-        order.setCustomer(optCustomer.get());
+        order.setCustomer(customer);
         order.setDateCreated(LocalDate.now());
         order.setAddress(orderCreateDTO.getAddress());
         priceAndPopulateOrderItems(orderCreateDTO.getProductQuantities(), order);
+        order = ordersRepo.save(order);
+
+        Long inCustomerId = customer.getId();
+        Long outCustomerId = order.getCustomer().getId();
+
         productOrderProducer.produceProductOrderEvents(order);
 
-        return ordersRepo.save(order);
+        return HttpResponse.created(order);
     }
 
     @ExecuteOn(TaskExecutors.BLOCKING)
     @Transactional
     @Post("/{id}")
-    public Order updateOrder(@Body OrderUpdateDTO orderUpdateDTO, @PathVariable Long id) {
+    public HttpResponse<Order> updateOrder(@PathVariable Long id, @Body OrderUpdateDTO orderUpdateDTO) {
         Optional<Order> optOrder = ordersRepo.findById(id);
-        if (optOrder.isEmpty()) {
-            throw new HttpStatusException(HttpStatus.NOT_FOUND, "Order not found");
-        }
-
+        if (optOrder.isEmpty()) return HttpResponse.notFound();
         Order order = optOrder.get();
-        order.setAddress(orderUpdateDTO.getAddress());
-        priceAndPopulateOrderItems(orderUpdateDTO.getProductQuantities(), order);
-        productOrderProducer.produceProductOrderEvents(order);
 
-        return ordersRepo.save(order);
+        order.setPaid(orderUpdateDTO.isPaid());
+        order.setDelivered(orderUpdateDTO.isDelivered());
+
+        return HttpResponse.ok(order);
     }
 
     @Delete("/{id}")
     public HttpResponse<Void> deleteOrder(@PathVariable Long id) {
-        if (!ordersRepo.existsById(id)) {
-            throw new HttpStatusException(HttpStatus.NOT_FOUND, "Order not found");
-        }
+        if (!ordersRepo.existsById(id)) return HttpResponse.notFound();
         ordersRepo.deleteById(id);
         return HttpResponse.noContent();
     }

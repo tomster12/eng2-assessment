@@ -1,5 +1,6 @@
 package uk.ac.york.eng2.orders.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.micronaut.serde.annotation.Serdeable;
 import jakarta.persistence.*;
@@ -22,10 +23,6 @@ public class Customer {
 
     @Column(nullable = false, length = 255)
     private String familyName;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "customer")
-    private List<Order> order;
 
     public Long getId() {
         return id;
@@ -57,13 +54,5 @@ public class Customer {
 
     public void setFamilyName(String phone) {
         this.familyName = phone;
-    }
-
-    public List<Order> getOrder() {
-        return order;
-    }
-
-    public void setOrder(List<Order> order) {
-        this.order = order;
     }
 }
