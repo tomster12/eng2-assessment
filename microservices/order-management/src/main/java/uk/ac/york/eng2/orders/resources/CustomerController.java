@@ -13,6 +13,7 @@ import uk.ac.york.eng2.orders.repository.CustomerRepository;
 import java.util.List;
 import java.util.Optional;
 
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Customers")
 @Controller(CustomerController.PREFIX)
 public class CustomerController {
     public static final String PREFIX = "/customer";

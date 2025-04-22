@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
 
+@io.swagger.v3.oas.annotations.tags.Tag(name = "Orders")
 @Controller(OrdersController.PREFIX)
 public class OrdersController {
     public static final String PREFIX = "/orders";

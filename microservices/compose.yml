@@ -1,1 +1,170 @@
-# write your Docker Compose configuration here
+services:
+  # DB for product-management microservice
+  product-db:
+    image: mariadb:11
+    environment:
+      MARIADB_USER: productuser
+      MARIADB_PASSWORD: productpw
+      MARIADB_ROOT_PASSWORD: productroot
+      MARIADB_DATABASE: productdb
+    volumes:
+      - product-db-data:/var/lib/mysql
+    healthcheck:
+      test: [ 'CMD', 'healthcheck.sh', '--su=mysql', '--connect', '--innodb_initialized' ]
+      timeout: 10s
+      retries: 3
+
+  # DB for order-management microservice
+  order-db:
+    image: mariadb:11
+    environment:
+      MARIADB_USER: orderuser
+      MARIADB_PASSWORD: orderpw
+      MARIADB_ROOT_PASSWORD: orderroot
+      MARIADB_DATABASE: orderdb
+    volumes:
+      - order-db-data:/var/lib/mysql
+    healthcheck:
+      test: [ 'CMD', 'healthcheck.sh', '--su=mysql', '--connect', '--innodb_initialized' ]
+      timeout: 10s
+      retries: 3
+
+  # 3-node Kafka cluster
+  kafka-0:
+    image: docker.io/bitnami/kafka:3.5
+    environment:
+      # KRaft settings
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
+      - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
+      # Listeners
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      # Default topic settings
+      - KAFKA_CFG_NUM_PARTITIONS=6
+      - KAFKA_CFG_DEFAULT_REPLICATION_FACTOR=3
+      # Disable automated topic creation
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=false
+      # JMX port for metrics
+      - JMX_PORT=9997
+      - KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=kafka-0 -Dcom.sun.management.jmxremote.rmi.port=9997
+    volumes:
+      - kafka-0-data:/bitnami/kafka
+    healthcheck:
+      test: [ 'CMD-SHELL', 'unset KAFKA_JMX_OPTS; export JMX_PORT=9999; kafka-topics.sh --bootstrap-server localhost:9092 --topic hc --create --if-not-exists && kafka-topics.sh --bootstrap-server localhost:9092 --topic hc --describe' ]
+      timeout: 10s
+      retries: 3
+
+  kafka-1:
+    image: docker.io/bitnami/kafka:3.5
+    environment:
+      # KRaft settings
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
+      - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
+      # Listeners
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      # Default topic settings
+      - KAFKA_CFG_NUM_PARTITIONS=6
+      - KAFKA_CFG_DEFAULT_REPLICATION_FACTOR=3
+      # Disable automated topic creation
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=false
+      # JMX port for metrics
+      - JMX_PORT=9997
+      - KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=kafka-1 -Dcom.sun.management.jmxremote.rmi.port=9997
+    volumes:
+      - kafka-1-data:/bitnami/kafka
+
+  kafka-2:
+    image: docker.io/bitnami/kafka:3.5
+    environment:
+      # KRaft settings
+      - KAFKA_CFG_NODE_ID=2
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
+      - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
+      # Listeners
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      # Default topic settings
+      - KAFKA_CFG_NUM_PARTITIONS=6
+      - KAFKA_CFG_DEFAULT_REPLICATION_FACTOR=3
+      # Disable automated topic creation
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=false
+      # JMX port for metrics
+      - JMX_PORT=9997
+      - KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=kafka-2 -Dcom.sun.management.jmxremote.rmi.port=9997
+    volumes:
+      - kafka-2-data:/bitnami/kafka
+
+  # Web-based UI for MariaDB (http://localhost:9000)
+  adminer:
+    image: adminer:4-standalone
+    ports:
+      - 9000:8080
+
+  # product-management microservice (http://localhost:8080) depends on [kafka-0:healthy]
+  product-management:
+    image: product-management:latest
+    ports:
+      - 8080:8080
+    environment:
+      DATASOURCES_DEFAULT_URL: jdbc:mariadb://db/productdb
+      DATASOURCES_DEFAULT_USERNAME: productuser
+      DATASOURCES_DEFAULT_PASSWORD: productpw
+      KAFKA_BOOTSTRAP_SERVERS: kafka-0:9092,kafka-1:9092,kafka-2:9092
+    depends_on:
+      product-db:
+        condition: service_healthy
+      kafka-0:
+        condition: service_healthy
+
+  # order-management microservice (http://localhost:8081) depends on [kafka-0:healthy]
+  order-management:
+    image: order-management:latest
+    ports:
+      - 8081:8081
+    environment:
+      DATASOURCES_DEFAULT_URL: jdbc:mariadb://db/orderdb
+      DATASOURCES_DEFAULT_USERNAME: orderuser
+      DATASOURCES_DEFAULT_PASSWORD: orderpw
+      KAFKA_BOOTSTRAP_SERVERS: kafka-0:9092,kafka-1:9092,kafka-2:9092
+    depends_on:
+      order-db:
+        condition: service_healthy
+      kafka-0:
+        condition: service_healthy
+
+  # Kafka web-based UI (http://localhost:9001) depends on [kafka-0, kafka-1, kafka-2]
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 9001:8080
+    depends_on:
+      - kafka-0
+      - kafka-1
+      - kafka-2
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka-0:9092
+      KAFKA_CLUSTERS_0_METRICS_PORT: 9997
+      DYNAMIC_CONFIG_ENABLED: 'true'
+
+volumes:
+  product-db-data:
+  order-db-data:
+  kafka-0-data:
+  kafka-1-data:
+  kafka-2-data:
