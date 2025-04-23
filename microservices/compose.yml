@@ -56,7 +56,7 @@ services:
       - kafka-0-data:/bitnami/kafka
     healthcheck:
       test: [ 'CMD-SHELL', 'unset KAFKA_JMX_OPTS; export JMX_PORT=9999; kafka-topics.sh --bootstrap-server localhost:9092 --topic hc --create --if-not-exists && kafka-topics.sh --bootstrap-server localhost:9092 --topic hc --describe' ]
-      timeout: 10s
+      timeout: 5s
       retries: 3
 
   kafka-1:
@@ -115,15 +115,15 @@ services:
     ports:
       - 9000:8080
 
-  # product-management microservice (http://localhost:8080) depends on [kafka-0:healthy]
+  # product-management microservice (http://localhost:8081) depends on [kafka-0:healthy]
   product-management:
     image: product-management:latest
     ports:
-      - 8080:8080
+      - 8081:8081
     environment:
-      DATASOURCES_DEFAULT_URL: jdbc:mariadb://db/productdb
-      DATASOURCES_DEFAULT_USERNAME: productuser
-      DATASOURCES_DEFAULT_PASSWORD: productpw
+      DATASOURCES_PRODUCTS_URL: jdbc:mariadb://product-db/productdb
+      DATASOURCES_PRODUCTS_USERNAME: productuser
+      DATASOURCES_PRODUCTS_PASSWORD: productpw
       KAFKA_BOOTSTRAP_SERVERS: kafka-0:9092,kafka-1:9092,kafka-2:9092
     depends_on:
       product-db:
@@ -131,16 +131,17 @@ services:
       kafka-0:
         condition: service_healthy
 
-  # order-management microservice (http://localhost:8081) depends on [kafka-0:healthy]
+  # order-management microservice (http://localhost:8080) depends on [kafka-0:healthy]
   order-management:
     image: order-management:latest
     ports:
-      - 8081:8081
+      - 8080:8080
     environment:
-      DATASOURCES_DEFAULT_URL: jdbc:mariadb://db/orderdb
-      DATASOURCES_DEFAULT_USERNAME: orderuser
-      DATASOURCES_DEFAULT_PASSWORD: orderpw
+      DATASOURCES_ORDERS_URL: jdbc:mariadb://order-db/orderdb
+      DATASOURCES_ORDERS_USERNAME: orderuser
+      DATASOURCES_ORDERS_PASSWORD: orderpw
       KAFKA_BOOTSTRAP_SERVERS: kafka-0:9092,kafka-1:9092,kafka-2:9092
+      PRODUCTS_URL: http://product-management:8081
     depends_on:
       order-db:
         condition: service_healthy
@@ -161,6 +162,14 @@ services:
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka-0:9092
       KAFKA_CLUSTERS_0_METRICS_PORT: 9997
       DYNAMIC_CONFIG_ENABLED: 'true'
+
+  # Structurizr C4-Model Viewer (http://localhost:9002)
+  structurizr:
+    image: structurizr/lite:latest
+    ports:
+      - 9002:8080
+    volumes:
+      - ./structurizr:/usr/local/structurizr
 
 volumes:
   product-db-data:

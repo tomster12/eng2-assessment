@@ -66,6 +66,7 @@ micronaut {
             modelPackageName = "uk.ac.york.cs.eng2.orders.product-management.model"
             clientId = "products"
             useReactive = false
+            alwaysUseGenerateHttpResponse = true
         }
     }
 }

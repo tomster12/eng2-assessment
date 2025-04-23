@@ -191,8 +191,9 @@ public class OrdersControllerTest {
         OrderPriceResponseDTO orderPriceResponse = new OrderPriceResponseDTO();
         orderPriceResponse.setTotalPrice(new BigDecimal("10.0"));
         orderPriceResponse.setProductPrices(getFakeProductPrices());
+        HttpResponse response = HttpResponse.ok(orderPriceResponse);
+        when(mock.priceOrder(any())).thenReturn(response);
 
-        when(mock.priceOrder(any())).thenReturn(orderPriceResponse);
         return mock;
     }
 

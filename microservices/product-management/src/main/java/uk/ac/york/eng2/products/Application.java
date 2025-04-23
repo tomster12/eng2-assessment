@@ -11,7 +11,6 @@ import io.swagger.v3.oas.annotations.info.*;
     )
 )
 public class Application {
-
     public static final String DATA_SOURCE = "products";
 
     public static void main(String[] args) {

@@ -101,7 +101,11 @@ public class OrdersController {
     private void priceAndPopulateOrderItems(Map<String, Long> productQuantities, Order order) {
         OrderPriceRequestDTO orderRequestDTO = new OrderPriceRequestDTO();
         orderRequestDTO.setProductQuantities(productQuantities);
-        OrderPriceResponseDTO orderResponseDTO = productsApi.priceOrder(orderRequestDTO);
+        HttpResponse<OrderPriceResponseDTO> priceOrderResponse = productsApi.priceOrder(orderRequestDTO);
+        if (priceOrderResponse.getStatus() != HttpStatus.OK) {
+            throw new HttpStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Pricing service could not price order");
+        }
+        OrderPriceResponseDTO orderResponseDTO = priceOrderResponse.body();
 
         List<OrderItem> orderItems = new ArrayList<>();
         BigDecimal totalAmount = BigDecimal.ZERO;
