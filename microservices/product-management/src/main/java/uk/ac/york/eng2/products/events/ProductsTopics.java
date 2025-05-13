@@ -8,12 +8,7 @@ import org.apache.kafka.clients.admin.NewTopic;
 
 @Requires(bean = AdminClient.class)
 @Factory
-public class ProductsTopicFactory {
+public class ProductsTopics {
 
     public static final String TOPIC_PRODUCT_ORDER = "product_order";
-
-    @Bean
-    NewTopic orderPlacementsTopic() {
-        return new NewTopic(TOPIC_PRODUCT_ORDER, 1, (short) 1);
-    }
 }

@@ -1,14 +1,78 @@
-// You should customise the URI, replacing 202425 with your examination number.
-//
-// You will need to set the namespaceURI in the uk.ac.york.cs.eng2.offers.evl/plugin.xml to the same URI.
-
 @namespace(uri="http://cs.york.ac.uk/eng2/202425/offers", prefix="dis")
 package offers;
 
-// Placeholder class to generate some code - replace from here on with your metamodel.
-//
-// You may want to delete the old generated code in src/ before generating code from the .genmodel.
-
 class Model {
-	
+  val Product[*] products;
+  val Category[*] categories;
+  val OfferRule[*] rules;
 }
+
+class Product {
+  attr String name;
+  ref Category category;
+  val Tag[*] tags;
+}
+
+class Tag {
+  attr String name;
+}
+
+class Category {
+  attr String name;
+  ref Category parent;
+  val Category[*] subcategories;
+}
+
+class OfferRule {
+  attr String name;
+
+  val Condition[*] conditions;
+  val Action[*] actions;
+
+  ref OfferRule triggersIfMatch;
+  ref OfferRule triggersIfNotMatch;
+  ref OfferRule triggersAlways;
+}
+
+abstract class Condition {}
+
+class ProductCondition extends Condition {
+  ref Product product;
+}
+
+class TagCondition extends Condition {
+  ref Tag tag;
+}
+
+class CategoryCondition extends Condition {
+  ref Category category;
+}
+
+class MinOrderValueCondition extends Condition {
+  attr double minValue;
+}
+
+class MaxUsesPerDayCondition extends Condition {
+  attr int maxUses;
+}
+
+abstract class Action {}
+
+class PercentageDiscountAction extends Action {
+  ref Product targetProduct;
+  attr double percentage;
+}
+
+class FixedDiscountAction extends Action {
+  attr double amount;
+}
+
+class AddFreeProductAction extends Action {
+  ref Product freeProduct;
+}
+
+class AddDiscountedProductAction extends Action {
+  ref Product product;
+  attr double discountedPrice;
+}
+

@@ -1,0 +1,1053 @@
+> Task :generateProduct-managementOpenApiApis UP-TO-DATE
+> Task :generateProduct-managementOpenApiModels UP-TO-DATE
+> Task :compileJava UP-TO-DATE
+> Task :processResources
+> Task :classes
+> Task :compileTestJava UP-TO-DATE
+> Task :compileTestResourcesJava NO-SOURCE
+> Task :inspectRuntimeClasspath
+> Task :processTestResourcesResources NO-SOURCE
+> Task :testResourcesClasses UP-TO-DATE
+> Task :internalStartTestResourcesService
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses UP-TO-DATE
+16:40:58.110 [Test worker] INFO  i.m.c.DefaultApplicationContext$RuntimeConfiguredEnvironment - Established active environments: [test]
+16:40:58.403 [Test worker] INFO  i.m.s.ObjectMappers$ObjectMapperContext$1 - Established active environments: [test]
+16:40:59.115 [Test worker] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values:
+	auto.include.jmx.reporter = true
+	bootstrap.controllers = []
+	bootstrap.servers = [PLAINTEXT://localhost:60362]
+	client.dns.lookup = use_all_dns_ips
+	client.id =
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	enable.metrics.push = true
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+16:40:59.245 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.8.0
+16:40:59.246 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 771b9576b00ecf5b
+16:40:59.246 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1745595659244
+16:40:59.250 [Test worker] INFO  i.m.c.kafka.admin.KafkaNewTopics - Creating new topics: [(name=product_order, numPartitions=1, replicationFactor=1, replicasAssignments=null, configs=null)]
+16:40:59.303 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:40:59.426 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@5dc7881d
+16:40:59.428 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:40:59.950 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Cleaning schema for database with qualifier [orders]
+16:41:00.039 [Test worker] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mariadb://localhost:60365/test (MariaDB 11.7)
+16:41:00.066 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:41:00.117 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped pre-schema database level objects (execution time 00:00.003s)
+16:41:00.154 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.035s)
+16:41:00.160 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.005s)
+16:41:00.162 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped post-schema database level objects (execution time 00:00.001s)
+16:41:00.172 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Running migrations for database with qualifier [orders]
+16:41:00.181 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:41:00.197 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Schema history table `test`.`flyway_schema_history` does not exist yet
+16:41:00.199 [Test worker] INFO  o.f.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:00.015s)
+16:41:00.210 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Creating Schema History table `test`.`flyway_schema_history` ...
+16:41:00.257 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `test`: << Empty Schema >>
+16:41:00.267 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "1 - create-orders-schema"
+16:41:00.326 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 1 migration to schema `test`, now at version v1 (execution time 00:00.039s)
+16:41:00.457 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+16:41:00.522 [Test worker] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+16:41:00.944 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:41:00.950 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:41:00.950 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:41:02.382 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-1 unregistered
+16:41:02.385 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+16:41:02.385 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+16:41:02.385 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+16:41:02.385 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+16:41:02.391 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+16:41:02.428 [Test worker] INFO  i.m.c.DefaultApplicationContext$RuntimeConfiguredEnvironment - Established active environments: [test]
+16:41:02.452 [Test worker] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values:
+	auto.include.jmx.reporter = true
+	bootstrap.controllers = []
+	bootstrap.servers = [PLAINTEXT://localhost:60362]
+	client.dns.lookup = use_all_dns_ips
+	client.id =
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	enable.metrics.push = true
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+16:41:02.456 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.8.0
+16:41:02.456 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 771b9576b00ecf5b
+16:41:02.456 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1745595662456
+16:41:02.457 [Test worker] INFO  i.m.c.kafka.admin.KafkaNewTopics - Creating new topics: [(name=product_order, numPartitions=1, replicationFactor=1, replicasAssignments=null, configs=null)]
+16:41:02.469 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+16:41:02.473 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.mariadb.jdbc.Connection@ec824ca
+16:41:02.473 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+16:41:02.482 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Cleaning schema for database with qualifier [orders]
+16:41:02.485 [Test worker] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mariadb://localhost:60365/test (MariaDB 11.7)
+16:41:02.490 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:41:02.495 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+16:41:02.528 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.032s)
+16:41:02.534 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.005s)
+16:41:02.535 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped post-schema database level objects (execution time 00:00.001s)
+16:41:02.538 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Running migrations for database with qualifier [orders]
+16:41:02.545 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:41:02.549 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Schema history table `test`.`flyway_schema_history` does not exist yet
+16:41:02.550 [Test worker] INFO  o.f.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:00.003s)
+16:41:02.557 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Creating Schema History table `test`.`flyway_schema_history` ...
+16:41:02.584 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `test`: << Empty Schema >>
+16:41:02.589 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "1 - create-orders-schema"
+16:41:02.630 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 1 migration to schema `test`, now at version v1 (execution time 00:00.030s)
+16:41:02.648 [Test worker] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+16:41:02.662 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:41:02.663 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:41:02.663 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    select
+        1
+    from
+        customer c1_0
+    where
+        (
+            c1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    select
+        1
+    from
+        customer c1_0
+    where
+        (
+            c1_0.email=?
+        )
+    limit
+        ?
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        customer
+        (email, family_name, first_name, id)
+    values
+        (?, ?, ?, ?)
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+Hibernate:
+    select
+        1
+    from
+        customer c1_0
+    where
+        (
+            c1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+    where
+        (
+            c1_0.id=?
+        )
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    select
+        1
+    from
+        customer c1_0
+    where
+        (
+            c1_0.email=?
+        )
+    limit
+        ?
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        customer
+        (email, family_name, first_name, id)
+    values
+        (?, ?, ?, ?)
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        (
+            c1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        (
+            c1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    select
+        1
+    from
+        customer c1_0
+    where
+        (
+            c1_0.email=?
+        )
+    limit
+        ?
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        customer
+        (email, family_name, first_name, id)
+    values
+        (?, ?, ?, ?)
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        (
+            c1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    update
+        customer
+    set
+        email=?,
+        family_name=?,
+        first_name=?
+    where
+        id=?
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    select
+        1
+    from
+        customer c1_0
+    where
+        (
+            c1_0.email=?
+        )
+    limit
+        ?
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        customer
+        (email, family_name, first_name, id)
+    values
+        (?, ?, ?, ?)
+Hibernate:
+    select
+        1
+    from
+        customer c1_0
+    where
+        (
+            c1_0.email=?
+        )
+    limit
+        ?
+16:41:03.834 [kafka-admin-client-thread | adminclient-2] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-2 unregistered
+16:41:03.836 [kafka-admin-client-thread | adminclient-2] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+16:41:03.836 [kafka-admin-client-thread | adminclient-2] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+16:41:03.836 [kafka-admin-client-thread | adminclient-2] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+16:41:03.837 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+16:41:03.843 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+16:41:03.884 [Test worker] INFO  i.m.c.DefaultApplicationContext$RuntimeConfiguredEnvironment - Established active environments: [test]
+16:41:03.908 [Test worker] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values:
+	auto.include.jmx.reporter = true
+	bootstrap.controllers = []
+	bootstrap.servers = [PLAINTEXT://localhost:60362]
+	client.dns.lookup = use_all_dns_ips
+	client.id =
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	enable.metrics.push = true
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+16:41:03.912 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.8.0
+16:41:03.912 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 771b9576b00ecf5b
+16:41:03.912 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1745595663912
+16:41:03.913 [Test worker] INFO  i.m.c.kafka.admin.KafkaNewTopics - Creating new topics: [(name=product_order, numPartitions=1, replicationFactor=1, replicasAssignments=null, configs=null)]
+16:41:03.925 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+16:41:03.930 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection org.mariadb.jdbc.Connection@347133e
+16:41:03.930 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+16:41:03.940 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Cleaning schema for database with qualifier [orders]
+16:41:03.944 [Test worker] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mariadb://localhost:60365/test (MariaDB 11.7)
+16:41:03.949 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:41:03.954 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped pre-schema database level objects (execution time 00:00.001s)
+16:41:03.989 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.033s)
+16:41:03.994 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.005s)
+16:41:03.995 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped post-schema database level objects (execution time 00:00.000s)
+16:41:03.998 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Running migrations for database with qualifier [orders]
+16:41:04.005 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:41:04.009 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Schema history table `test`.`flyway_schema_history` does not exist yet
+16:41:04.009 [Test worker] INFO  o.f.core.internal.command.DbValidate - Successfully validated 1 migration (execution time 00:00.003s)
+16:41:04.017 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Creating Schema History table `test`.`flyway_schema_history` ...
+16:41:04.044 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `test`: << Empty Schema >>
+16:41:04.048 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "1 - create-orders-schema"
+16:41:04.089 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 1 migration to schema `test`, now at version v1 (execution time 00:00.029s)
+16:41:04.105 [Test worker] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+16:41:04.121 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:41:04.121 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:41:04.121 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    delete oi1_0
+    from
+        order_item oi1_0
+Hibernate:
+    delete o1_0
+    from
+        orders o1_0
+Hibernate:
+    select
+        1
+    from
+        orders o1_0
+    where
+        (
+            o1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    delete oi1_0
+    from
+        order_item oi1_0
+Hibernate:
+    delete o1_0
+    from
+        orders o1_0
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        customer
+        (email, family_name, first_name, id)
+    values
+        (?, ?, ?, ?)
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        (
+            c1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        orders
+        (address, customer_id, date_created, delivered, paid, total_amount, id)
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+Hibernate:
+    insert
+    into
+        order_item
+        (order_id, product_id, quantity, unit_price, id)
+    values
+        (?, ?, ?, ?, ?)
+Hibernate:
+    insert
+    into
+        order_item
+        (order_id, product_id, quantity, unit_price, id)
+    values
+        (?, ?, ?, ?, ?)
+Hibernate:
+    select
+        o1_0.id,
+        o1_0.address,
+        o1_0.customer_id,
+        o1_0.date_created,
+        o1_0.delivered,
+        o1_0.paid,
+        o1_0.total_amount
+    from
+        orders o1_0
+    where
+        (
+            o1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        c1_0.id=?
+Hibernate:
+    select
+        oi1_0.order_id,
+        oi1_0.id,
+        oi1_0.product_id,
+        oi1_0.quantity,
+        oi1_0.unit_price
+    from
+        order_item oi1_0
+    where
+        oi1_0.order_id=?
+Hibernate:
+    update
+        orders
+    set
+        address=?,
+        customer_id=?,
+        date_created=?,
+        delivered=?,
+        paid=?,
+        total_amount=?
+    where
+        id=?
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    delete oi1_0
+    from
+        order_item oi1_0
+Hibernate:
+    delete o1_0
+    from
+        orders o1_0
+Hibernate:
+    select
+        o1_0.id,
+        o1_0.address,
+        o1_0.customer_id,
+        o1_0.date_created,
+        o1_0.delivered,
+        o1_0.paid,
+        o1_0.total_amount
+    from
+        orders o1_0
+    where
+        (
+            o1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    delete oi1_0
+    from
+        order_item oi1_0
+Hibernate:
+    delete o1_0
+    from
+        orders o1_0
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        (
+            c1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    delete oi1_0
+    from
+        order_item oi1_0
+Hibernate:
+    delete o1_0
+    from
+        orders o1_0
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        customer
+        (email, family_name, first_name, id)
+    values
+        (?, ?, ?, ?)
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        (
+            c1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        orders
+        (address, customer_id, date_created, delivered, paid, total_amount, id)
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+Hibernate:
+    insert
+    into
+        order_item
+        (order_id, product_id, quantity, unit_price, id)
+    values
+        (?, ?, ?, ?, ?)
+Hibernate:
+    insert
+    into
+        order_item
+        (order_id, product_id, quantity, unit_price, id)
+    values
+        (?, ?, ?, ?, ?)
+Hibernate:
+    select
+        o1_0.id,
+        o1_0.address,
+        o1_0.customer_id,
+        o1_0.date_created,
+        o1_0.delivered,
+        o1_0.paid,
+        o1_0.total_amount
+    from
+        orders o1_0
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        c1_0.id=?
+Hibernate:
+    select
+        oi1_0.order_id,
+        oi1_0.id,
+        oi1_0.product_id,
+        oi1_0.quantity,
+        oi1_0.unit_price
+    from
+        order_item oi1_0
+    where
+        oi1_0.order_id=?
+Hibernate:
+    select
+        1
+    from
+        orders o1_0
+    where
+        (
+            o1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    delete o1_0
+    from
+        orders o1_0
+    where
+        (
+            o1_0.id=?
+        )
+Hibernate:
+    select
+        o1_0.id,
+        o1_0.address,
+        o1_0.customer_id,
+        o1_0.date_created,
+        o1_0.delivered,
+        o1_0.paid,
+        o1_0.total_amount
+    from
+        orders o1_0
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    delete oi1_0
+    from
+        order_item oi1_0
+Hibernate:
+    delete o1_0
+    from
+        orders o1_0
+Hibernate:
+    select
+        o1_0.id,
+        o1_0.address,
+        o1_0.customer_id,
+        o1_0.date_created,
+        o1_0.delivered,
+        o1_0.paid,
+        o1_0.total_amount
+    from
+        orders o1_0
+    where
+        (
+            o1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    delete c1_0
+    from
+        customer c1_0
+Hibernate:
+    delete oi1_0
+    from
+        order_item oi1_0
+Hibernate:
+    delete o1_0
+    from
+        orders o1_0
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        customer
+        (email, family_name, first_name, id)
+    values
+        (?, ?, ?, ?)
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        (
+            c1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        orders
+        (address, customer_id, date_created, delivered, paid, total_amount, id)
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+Hibernate:
+    insert
+    into
+        order_item
+        (order_id, product_id, quantity, unit_price, id)
+    values
+        (?, ?, ?, ?, ?)
+Hibernate:
+    insert
+    into
+        order_item
+        (order_id, product_id, quantity, unit_price, id)
+    values
+        (?, ?, ?, ?, ?)
+Hibernate:
+    select
+        o1_0.id,
+        o1_0.address,
+        o1_0.customer_id,
+        o1_0.date_created,
+        o1_0.delivered,
+        o1_0.paid,
+        o1_0.total_amount
+    from
+        orders o1_0
+    where
+        (
+            o1_0.id=?
+        )
+    limit
+        ?
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        c1_0.id=?
+Hibernate:
+    select
+        oi1_0.order_id,
+        oi1_0.id,
+        oi1_0.product_id,
+        oi1_0.quantity,
+        oi1_0.unit_price
+    from
+        order_item oi1_0
+    where
+        oi1_0.order_id=?
+Hibernate:
+    select
+        o1_0.id,
+        o1_0.address,
+        o1_0.customer_id,
+        o1_0.date_created,
+        o1_0.delivered,
+        o1_0.paid,
+        o1_0.total_amount
+    from
+        orders o1_0
+Hibernate:
+    select
+        c1_0.id,
+        c1_0.email,
+        c1_0.family_name,
+        c1_0.first_name
+    from
+        customer c1_0
+    where
+        c1_0.id=?
+Hibernate:
+    select
+        oi1_0.order_id,
+        oi1_0.id,
+        oi1_0.product_id,
+        oi1_0.quantity,
+        oi1_0.unit_price
+    from
+        order_item oi1_0
+    where
+        oi1_0.order_id=?
+16:41:05.657 [kafka-admin-client-thread | adminclient-3] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-3 unregistered
+16:41:05.662 [kafka-admin-client-thread | adminclient-3] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+16:41:05.662 [kafka-admin-client-thread | adminclient-3] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+16:41:05.662 [kafka-admin-client-thread | adminclient-3] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+16:41:05.663 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+16:41:05.670 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+> Task :test
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.8/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+BUILD SUCCESSFUL in 11s
+9 actionable tasks: 4 executed, 5 up-to-date
+16:41:06: Execution finished 'test'.

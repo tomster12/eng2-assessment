@@ -21,7 +21,7 @@ public class ProductOrderConsumer {
     OrdersByDayRepository ordersByDayRepo;
 
     @Transactional
-    @Topic(ProductsTopicFactory.TOPIC_PRODUCT_ORDER)
+    @Topic(ProductsTopics.TOPIC_PRODUCT_ORDER)
     void orderPlaced(@KafkaKey long id, ProductOrderEvent productOrderEvent) {
         System.out.println("OrderPlaced: " + productOrderEvent);
 
@@ -35,16 +35,17 @@ public class ProductOrderConsumer {
 
         if (optOrdersByDay.isPresent()) {
             OrdersByDay ordersByDay = optOrdersByDay.get();
-            ordersByDay.setCount(ordersByDay.getCount() + productOrderEvent.quantity());
+            ordersByDay.setCount(ordersByDay.getCount() + 1L);
             ordersByDayRepo.save(ordersByDay);
         } else {
             OrdersByDay ordersByDay = new OrdersByDay();
             ordersByDay.setProduct(product);
             ordersByDay.setDay(productOrderEvent.date());
-            ordersByDay.setCount(productOrderEvent.quantity());
+            ordersByDay.setCount(1L);
             ordersByDay = ordersByDayRepo.save(ordersByDay);
 
             System.out.println("OrderPlaced: " + ordersByDay);
         }
     }
 }
+

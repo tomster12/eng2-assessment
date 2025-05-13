@@ -54,10 +54,10 @@ public class ProductOrderConsumerTest {
 
         LocalDate correctDay = LocalDate.of(2022, 6, 2);
 
-        ProductOrderEvent productOrderEvent1 = new ProductOrderEvent(product.getId(), 4L, correctDay);
+        ProductOrderEvent productOrderEvent1 = new ProductOrderEvent(product.getId(), correctDay);
         Assertions.assertDoesNotThrow(() -> productOrderConsumer.orderPlaced(product.getId(), productOrderEvent1));
 
-        ProductOrderEvent productOrderEvent2 = new ProductOrderEvent(product.getId(), 5L, correctDay);
+        ProductOrderEvent productOrderEvent2 = new ProductOrderEvent(product.getId(), correctDay);
         Assertions.assertDoesNotThrow(() -> productOrderConsumer.orderPlaced(product.getId(), productOrderEvent2));
 
         OrdersByDayRequestDTO correctOrdersByDayRequestDTO = new OrdersByDayRequestDTO();
@@ -66,7 +66,7 @@ public class ProductOrderConsumerTest {
         Assertions.assertEquals(HttpStatus.OK, correctDailyOrdersResponse.status());
         OrdersByDay ordersByDay = correctDailyOrdersResponse.body();
 
-        assertEquals(9L, ordersByDay.getCount());
+        assertEquals(2L, ordersByDay.getCount());
     }
 
     @Test
@@ -81,7 +81,7 @@ public class ProductOrderConsumerTest {
         Product product = createResponse.body();
 
         LocalDate correctDay = LocalDate.of(2022, 6, 2);
-        ProductOrderEvent productOrderEvent = new ProductOrderEvent(product.getId(), 1L, correctDay);
+        ProductOrderEvent productOrderEvent = new ProductOrderEvent(product.getId(), correctDay);
         Assertions.assertDoesNotThrow(() -> productOrderConsumer.orderPlaced(product.getId(), productOrderEvent));
 
         LocalDate wrongDay = LocalDate.of(2022, 6, 3);
@@ -100,7 +100,7 @@ public class ProductOrderConsumerTest {
     @Test
     public void orderMissingProductFail() {
         LocalDate day = LocalDate.of(2022, 6, 2);
-        ProductOrderEvent productOrderEvent = new ProductOrderEvent(0L, 1L, day);
+        ProductOrderEvent productOrderEvent = new ProductOrderEvent(0L, day);
         Assertions.assertThrows(IllegalArgumentException.class, () -> productOrderConsumer.orderPlaced(0L, productOrderEvent));
     }
 }

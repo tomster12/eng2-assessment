@@ -14,7 +14,7 @@ public interface ProductOrderProducer {
     default void produceProductOrderEvents(Order order) {
         // Key the order product placements on productId to prevent ACID non-compliance on the consumers side
         for (OrderItem item : order.getOrderItems()) {
-            ProductOrderEvent event = new ProductOrderEvent(item.getProductId(), item.getQuantity(), order.getDateCreated());
+            ProductOrderEvent event = new ProductOrderEvent(item.getProductId(), order.getDateCreated());
             productOrdered(item.getProductId(), event);
         }
     }

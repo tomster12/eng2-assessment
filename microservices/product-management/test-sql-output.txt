@@ -1,0 +1,1972 @@
+Starting Gradle Daemon...
+Gradle Daemon started in 1 s 228 ms
+> Task :compileJava UP-TO-DATE
+> Task :processResources
+> Task :classes
+> Task :compileTestJava UP-TO-DATE
+> Task :compileTestResourcesJava NO-SOURCE
+> Task :inspectRuntimeClasspath
+> Task :processTestResourcesResources NO-SOURCE
+> Task :testResourcesClasses UP-TO-DATE
+> Task :internalStartTestResourcesService
+Test resources server started in standalone mode. You can stop it by running the stopTestResourcesService task.
+[1.338s][warning][cds] Preload Warning: Verification failed for io.micronaut.inject.provider.JavaxProviderBeanDefinition
+[1.655s][warning][cds] Preload Warning: Verification failed for io.micronaut.http.netty.websocket.WebSocketMessageEncoder
+[2.549s][warning][cds] Preload Warning: Cannot find io/netty/channel/$Proxy30
+[3.124s][warning][cds] Skipping jdk/internal/event/Event: JFR event class
+[3.124s][warning][cds] Skipping org/testcontainers/containers/JdbcDatabaseContainer: Old class has been linked
+[3.124s][warning][cds] Skipping jdk/internal/event/SecurityProviderServiceEvent: JFR event class
+[3.125s][warning][cds] Skipping org/junit/rules/TestRule: Old class has been linked
+[3.125s][warning][cds] Skipping org/testcontainers/containers/MariaDBContainer: super class org/testcontainers/containers/JdbcDatabaseContainer is excluded
+[3.125s][warning][cds] Skipping io/micronaut/http/netty/websocket/WebSocketMessageEncoder: Failed verification
+[3.125s][warning][cds] Skipping jdk/internal/reflect/GeneratedConstructorAccessor1: Old class has been linked
+[3.125s][warning][cds] Skipping jdk/internal/event/ProcessStartEvent: JFR event class
+[3.126s][warning][cds] Skipping org/testcontainers/containers/FailureDetectingExternalResource: Old class has been linked
+[3.126s][warning][cds] Skipping org/testcontainers/containers/GenericContainer: Old class has been linked
+[3.126s][warning][cds] Skipping org/testcontainers/containers/KafkaContainer: super class org/testcontainers/containers/GenericContainer is excluded
+[3.126s][warning][cds] Skipping jdk/internal/reflect/GeneratedSerializationConstructorAccessor2: Old class has been linked
+[3.126s][warning][cds] Skipping jdk/internal/reflect/GeneratedSerializationConstructorAccessor3: Old class has been linked
+[3.126s][warning][cds] Skipping jdk/internal/reflect/GeneratedSerializationConstructorAccessor1: Old class has been linked
+[3.126s][warning][cds] Skipping io/micronaut/inject/provider/JavaxProviderBeanDefinition: Failed verification
+[3.126s][warning][cds] Skipping org/testcontainers/containers/Network: Old class has been linked
+
+[34m[test-resources-service][0;39m [36m16:30:05.646[0;39m [1;30m[main][0;39m [34mINFO [0;39m [35mi.m.c.DefaultApplicationContext$RuntimeConfiguredEnvironment[0;39m - Established active environments: [test]
+[34m[test-resources-service][0;39m [36m16:30:05.652[0;39m [1;30m[ForkJoinPool.commonPool-worker-10][0;39m [34mINFO [0;39m [35mi.m.t.e.TestResourcesResolverLoader[0;39m - Loaded 3 test resources resolvers: io.micronaut.testresources.kafka.KafkaTestResourceProvider, io.micronaut.testresources.mariadb.MariaDBTestResourceProvider, io.micronaut.testresources.testcontainers.GenericTestContainerProvider
+[34m[test-resources-service][0;39m [36m16:30:05.816[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mo.t.d.DockerClientProviderStrategy[0;39m - Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+[34m[test-resources-service][0;39m [36m16:30:05.898[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mo.t.d.DockerClientProviderStrategy[0;39m - Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+[34m[test-resources-service][0;39m [36m16:30:05.899[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mo.testcontainers.DockerClientFactory[0;39m - Docker host IP address is localhost
+[34m[test-resources-service][0;39m [36m16:30:05.909[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mo.testcontainers.DockerClientFactory[0;39m - Connected to docker:
+  Server Version: 28.0.1
+  API Version: 1.48
+  Operating System: Docker Desktop
+  Total Memory: 11914 MB
+[34m[test-resources-service][0;39m [36m16:30:05.914[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mo.testcontainers.images.PullPolicy[0;39m - Image pull policy will be performed by: DefaultPullPolicy()
+[34m[test-resources-service][0;39m [36m16:30:05.915[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mo.t.utility.ImageNameSubstitutor[0;39m - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+[34m[test-resources-service][0;39m [36m16:30:05.933[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mtc.testcontainers/ryuk:0.7.0[0;39m - Creating container for image: testcontainers/ryuk:0.7.0
+[34m[test-resources-service][0;39m [36m16:30:06.140[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mtc.testcontainers/ryuk:0.7.0[0;39m - Container testcontainers/ryuk:0.7.0 is starting: 9b80fd141c9c9d8318d18a07258eeb71ecb56cf488afa32b7603db0f55261694
+[34m[test-resources-service][0;39m [36m16:30:06.478[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mtc.testcontainers/ryuk:0.7.0[0;39m - Container testcontainers/ryuk:0.7.0 started in PT0.5444999S
+[34m[test-resources-service][0;39m [36m16:30:06.481[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mo.t.utility.RyukResourceReaper[0;39m - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+[34m[test-resources-service][0;39m [36m16:30:06.481[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mo.testcontainers.DockerClientFactory[0;39m - Checking the system...
+[34m[test-resources-service][0;39m [36m16:30:06.481[0;39m [1;30m[pool-1-thread-1][0;39m [34mINFO [0;39m [35mo.testcontainers.DockerClientFactory[0;39m - ✔︎ Docker server version should be at least 1.6.0
+[34m[test-resources-service][0;39m [36m16:30:06.579[0;39m [1;30m[scheduled-executor-thread-2][0;39m [34mINFO [0;39m [35mi.m.t.server.ExpiryManager[0;39m - Test resources server will automatically be shutdown if it doesn't receive requests for 60 minutes
+[34m[test-resources-service][0;39m [36m16:30:06.689[0;39m [1;30m[main][0;39m [34mINFO [0;39m [35mi.m.t.server.TestResourcesService[0;39m - A Micronaut Test Resources server is listening on port 59927, started in 1144ms
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses UP-TO-DATE
+[34m[test-resources-service][0;39m [36m16:30:11.095[0;39m [1;30m[io-executor-thread-1][0;39m [34mINFO [0;39m [35mi.m.t.testcontainers.TestContainers[0;39m - Starting test container kafka
+[34m[test-resources-service][0;39m [36m16:30:11.096[0;39m [1;30m[io-executor-thread-1][0;39m [34mINFO [0;39m [35mtc.confluentinc/cp-kafka:7.0.4[0;39m - Creating container for image: confluentinc/cp-kafka:7.0.4
+[34m[test-resources-service][0;39m [36m16:30:11.155[0;39m [1;30m[io-executor-thread-1][0;39m [34mINFO [0;39m [35mtc.confluentinc/cp-kafka:7.0.4[0;39m - Container confluentinc/cp-kafka:7.0.4 is starting: 21c216a69d5ba2e0c0d9917b9c15cdd7a2852858016f4c4c16bd76052b709f48
+[34m[test-resources-service][0;39m [36m16:30:15.172[0;39m [1;30m[io-executor-thread-1][0;39m [34mINFO [0;39m [35mtc.confluentinc/cp-kafka:7.0.4[0;39m - Container confluentinc/cp-kafka:7.0.4 started in PT4.0759728S
+[34m[test-resources-service][0;39m [36m16:30:15.350[0;39m [1;30m[io-executor-thread-1][0;39m [34mINFO [0;39m [35mi.m.t.testcontainers.TestContainers[0;39m - Starting test container mariadb
+[34m[test-resources-service][0;39m [36m16:30:15.355[0;39m [1;30m[io-executor-thread-1][0;39m [34mINFO [0;39m [35mtc.mariadb:latest[0;39m - Creating container for image: mariadb:latest
+[34m[test-resources-service][0;39m [36m16:30:15.421[0;39m [1;30m[io-executor-thread-1][0;39m [34mINFO [0;39m [35mtc.mariadb:latest[0;39m - Container mariadb:latest is starting: 8e28aac08e33946cff09d1db78305608f5385fcefbb71aff795870a7b65bb8b5
+[34m[test-resources-service][0;39m [36m16:30:15.688[0;39m [1;30m[io-executor-thread-1][0;39m [34mINFO [0;39m [35mtc.mariadb:latest[0;39m - Waiting for database connection to become available at jdbc:mariadb://localhost:59938/test using query 'SELECT 1'
+[34m[test-resources-service][0;39m [36m16:30:20.919[0;39m [1;30m[io-executor-thread-1][0;39m [34mINFO [0;39m [35mtc.mariadb:latest[0;39m - Container mariadb:latest started in PT5.564362S
+[34m[test-resources-service][0;39m [36m16:30:20.919[0;39m [1;30m[io-executor-thread-1][0;39m [34mINFO [0;39m [35mtc.mariadb:latest[0;39m - Container is started (JDBC URL: jdbc:mariadb://localhost:59938/test)
+16:30:10.071 [Test worker] INFO  i.m.c.DefaultApplicationContext$RuntimeConfiguredEnvironment - Established active environments: [test]
+16:30:10.391 [Test worker] INFO  i.m.s.ObjectMappers$ObjectMapperContext$1 - Established active environments: [test]
+16:30:15.198 [Test worker] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values:
+	auto.include.jmx.reporter = true
+	bootstrap.controllers = []
+	bootstrap.servers = [PLAINTEXT://localhost:59935]
+	client.dns.lookup = use_all_dns_ips
+	client.id =
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	enable.metrics.push = true
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+16:30:15.305 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.8.0
+16:30:15.306 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 771b9576b00ecf5b
+16:30:15.306 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1745595015304
+16:30:15.308 [Test worker] INFO  i.m.c.kafka.admin.KafkaNewTopics - Creating new topics: [(name=product_order, numPartitions=1, replicationFactor=1, replicasAssignments=null, configs=null)]
+16:30:20.935 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:30:21.052 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.mariadb.jdbc.Connection@2a0881f1
+16:30:21.054 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:30:21.413 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Cleaning schema for database with qualifier [products]
+16:30:21.494 [Test worker] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mariadb://localhost:59938/test (MariaDB 11.7)
+16:30:21.509 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:30:21.523 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Schema history table `test`.`flyway_schema_history` does not exist yet
+16:30:21.526 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped pre-schema database level objects (execution time 00:00.001s)
+16:30:21.533 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.006s)
+16:30:21.539 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.005s)
+16:30:21.540 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped post-schema database level objects (execution time 00:00.001s)
+16:30:21.547 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Running migrations for database with qualifier [products]
+16:30:21.554 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:30:21.585 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Schema history table `test`.`flyway_schema_history` does not exist yet
+16:30:21.588 [Test worker] INFO  o.f.core.internal.command.DbValidate - Successfully validated 4 migrations (execution time 00:00.030s)
+16:30:21.598 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Creating Schema History table `test`.`flyway_schema_history` ...
+16:30:21.657 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `test`: << Empty Schema >>
+16:30:21.665 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "1 - create-products-schema"
+16:30:21.702 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "2 - add-orders by day"
+16:30:21.727 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "3 - add-product-tags"
+16:30:21.759 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "999 - add test data"
+16:30:21.786 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 4 migrations to schema `test`, now at version v999 (execution time 00:00.052s)
+16:30:21.917 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+16:30:21.988 [Test worker] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+16:30:22.438 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:30:22.444 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:30:22.444 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:30:23.457 [Test worker] INFO  i.m.l.PropertiesLoggingLevelsConfigurer - Setting log level 'TRACE' for logger: 'org.hibernate.orm.jdbc.bind'
+16:30:23.602 [Test worker] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values:
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [PLAINTEXT://localhost:59935]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = product-management-$-product-order-consumer$-definition$-intercepted
+	client.rack =
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = product-management
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.LongDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class io.micronaut.configuration.kafka.serde.JsonObjectSerde
+
+16:30:23.647 [Test worker] INFO  o.a.k.c.t.i.KafkaMetricsCollector - initializing Kafka metrics collector
+16:30:23.697 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.8.0
+16:30:23.697 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 771b9576b00ecf5b
+16:30:23.697 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1745595023697
+16:30:23.704 [Test worker] INFO  o.a.k.c.c.i.LegacyKafkaConsumer - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Subscribed to topic(s): product_order
+16:30:23.704 [Test worker] INFO  i.m.c.k.p.KafkaConsumerProcessor - Kafka listener [ProductOrderConsumer#orderPlaced] subscribed to topics: [product_order]
+16:30:23.720 [pool-1-thread-1] INFO  i.m.c.k.p.KafkaConsumerProcessor - Consumer [product-management-$-product-order-consumer$-definition$-intercepted] assignments changed: null -> []
+16:30:23.738 [pool-1-thread-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Cluster ID: uvmRgsJsTluu7HvyNjvi1w
+16:30:23.835 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Discovered group coordinator localhost:59935 (id: 2147483646 rack: null)
+16:30:23.841 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] (Re-)joining group
+16:30:23.861 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Request joining group due to: need to re-join with the given member-id: product-management-$-product-order-consumer$-definition$-intercepted-c6014a8d-2067-4f46-aab9-264c121d5419
+16:30:23.861 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] (Re-)joining group
+16:30:23.879 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Successfully joined group with generation Generation{generationId=1, memberId='product-management-$-product-order-consumer$-definition$-intercepted-c6014a8d-2067-4f46-aab9-264c121d5419', protocol='range'}
+16:30:23.886 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Finished assignment for group at generation 1: {product-management-$-product-order-consumer$-definition$-intercepted-c6014a8d-2067-4f46-aab9-264c121d5419=Assignment(partitions=[product_order-0])}
+16:30:23.935 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Successfully synced group in generation Generation{generationId=1, memberId='product-management-$-product-order-consumer$-definition$-intercepted-c6014a8d-2067-4f46-aab9-264c121d5419', protocol='range'}
+16:30:23.936 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Notifying assignor about the new Assignment(partitions=[product_order-0])
+16:30:23.938 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Adding newly assigned partitions: product_order-0
+16:30:23.949 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Found no committed offset for partition product_order-0
+16:30:23.958 [pool-1-thread-1] INFO  o.a.k.c.c.i.SubscriptionState - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Resetting offset for partition product_order-0 to position FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:59935 (id: 1 rack: null)], epoch=0}}.
+16:30:24.041 [pool-1-thread-1] INFO  i.m.c.k.p.KafkaConsumerProcessor - Consumer [product-management-$-product-order-consumer$-definition$-intercepted] assignments changed: [] -> [product_order-0]
+16:30:24.241 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Revoke previously assigned partitions product_order-0
+16:30:24.241 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Member product-management-$-product-order-consumer$-definition$-intercepted-c6014a8d-2067-4f46-aab9-264c121d5419 sending LeaveGroup request to coordinator localhost:59935 (id: 2147483646 rack: null) due to the consumer is being closed
+16:30:24.241 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Resetting generation and member id due to: consumer pro-actively leaving the group
+16:30:24.242 [pool-1-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Request joining group due to: consumer pro-actively leaving the group
+16:30:24.491 [pool-1-thread-1] INFO  o.a.k.clients.FetchSessionHandler - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Node 1 sent an invalid full fetch response with extraPartitions=(product_order-0), response=(product_order-0)
+16:30:24.492 [pool-1-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+16:30:24.492 [pool-1-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+16:30:24.492 [pool-1-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+16:30:24.493 [pool-1-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+16:30:24.499 [pool-1-thread-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for product-management-$-product-order-consumer$-definition$-intercepted unregistered
+16:30:24.502 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-1 unregistered
+16:30:24.503 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+16:30:24.503 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+16:30:24.503 [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+16:30:24.505 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+16:30:24.511 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+16:30:24.550 [Test worker] INFO  i.m.c.DefaultApplicationContext$RuntimeConfiguredEnvironment - Established active environments: [test]
+16:30:24.577 [Test worker] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values:
+	auto.include.jmx.reporter = true
+	bootstrap.controllers = []
+	bootstrap.servers = [PLAINTEXT://localhost:59935]
+	client.dns.lookup = use_all_dns_ips
+	client.id =
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	enable.metrics.push = true
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+16:30:24.582 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.8.0
+16:30:24.582 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 771b9576b00ecf5b
+16:30:24.582 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1745595024582
+16:30:24.583 [Test worker] INFO  i.m.c.kafka.admin.KafkaNewTopics - Creating new topics: [(name=product_order, numPartitions=1, replicationFactor=1, replicasAssignments=null, configs=null)]
+16:30:24.599 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+16:30:24.604 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.mariadb.jdbc.Connection@7c127ff2
+16:30:24.604 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+16:30:24.613 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Cleaning schema for database with qualifier [products]
+16:30:24.616 [Test worker] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mariadb://localhost:59938/test (MariaDB 11.7)
+16:30:24.621 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:30:24.626 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+16:30:24.665 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.037s)
+16:30:24.670 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.005s)
+16:30:24.671 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped post-schema database level objects (execution time 00:00.000s)
+16:30:24.674 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Running migrations for database with qualifier [products]
+16:30:24.681 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:30:24.686 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Schema history table `test`.`flyway_schema_history` does not exist yet
+16:30:24.687 [Test worker] INFO  o.f.core.internal.command.DbValidate - Successfully validated 4 migrations (execution time 00:00.004s)
+16:30:24.694 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Creating Schema History table `test`.`flyway_schema_history` ...
+16:30:24.720 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `test`: << Empty Schema >>
+16:30:24.723 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "1 - create-products-schema"
+16:30:24.751 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "2 - add-orders by day"
+16:30:24.774 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "3 - add-product-tags"
+16:30:24.805 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "999 - add test data"
+16:30:24.828 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 4 migrations to schema `test`, now at version v999 (execution time 00:00.049s)
+16:30:24.847 [Test worker] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+16:30:24.863 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:30:24.864 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:30:24.864 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:30:24.919 [Test worker] INFO  i.m.l.PropertiesLoggingLevelsConfigurer - Setting log level 'TRACE' for logger: 'org.hibernate.orm.jdbc.bind'
+16:30:24.926 [Test worker] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values:
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [PLAINTEXT://localhost:59935]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = product-management-$-product-order-consumer$-definition$-intercepted
+	client.rack =
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = product-management
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.LongDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class io.micronaut.configuration.kafka.serde.JsonObjectSerde
+
+16:30:24.928 [Test worker] INFO  o.a.k.c.t.i.KafkaMetricsCollector - initializing Kafka metrics collector
+16:30:24.936 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.8.0
+16:30:24.936 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 771b9576b00ecf5b
+16:30:24.936 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1745595024936
+16:30:24.939 [Test worker] INFO  o.a.k.c.c.i.LegacyKafkaConsumer - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Subscribed to topic(s): product_order
+16:30:24.939 [Test worker] INFO  i.m.c.k.p.KafkaConsumerProcessor - Kafka listener [ProductOrderConsumer#orderPlaced] subscribed to topics: [product_order]
+16:30:24.940 [pool-2-thread-1] INFO  i.m.c.k.p.KafkaConsumerProcessor - Consumer [product-management-$-product-order-consumer$-definition$-intercepted] assignments changed: null -> []
+16:30:24.946 [pool-2-thread-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Cluster ID: uvmRgsJsTluu7HvyNjvi1w
+16:30:24.947 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Discovered group coordinator localhost:59935 (id: 2147483646 rack: null)
+16:30:24.949 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] (Re-)joining group
+16:30:24.951 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Request joining group due to: need to re-join with the given member-id: product-management-$-product-order-consumer$-definition$-intercepted-5ab4a8a3-e430-4e8e-82a6-195e8faa246a
+16:30:24.952 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] (Re-)joining group
+16:30:24.956 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Successfully joined group with generation Generation{generationId=3, memberId='product-management-$-product-order-consumer$-definition$-intercepted-5ab4a8a3-e430-4e8e-82a6-195e8faa246a', protocol='range'}
+16:30:24.956 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Finished assignment for group at generation 3: {product-management-$-product-order-consumer$-definition$-intercepted-5ab4a8a3-e430-4e8e-82a6-195e8faa246a=Assignment(partitions=[product_order-0])}
+16:30:24.960 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Successfully synced group in generation Generation{generationId=3, memberId='product-management-$-product-order-consumer$-definition$-intercepted-5ab4a8a3-e430-4e8e-82a6-195e8faa246a', protocol='range'}
+16:30:24.960 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Notifying assignor about the new Assignment(partitions=[product_order-0])
+16:30:24.960 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Adding newly assigned partitions: product_order-0
+16:30:24.962 [pool-2-thread-1] INFO  o.a.k.c.c.internals.ConsumerUtils - Setting offset for partition product_order-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:59935 (id: 1 rack: null)], epoch=0}}
+16:30:25.048 [pool-2-thread-1] INFO  i.m.c.k.p.KafkaConsumerProcessor - Consumer [product-management-$-product-order-consumer$-definition$-intercepted] assignments changed: [] -> [product_order-0]
+Hibernate:
+    delete obd1_0
+    from
+        orders_by_day obd1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:25.891 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:25.892 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Test
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        product
+        (name, unit_price, id)
+    values
+        (?, ?, ?)
+16:30:25.969 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:25.970 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.5]
+16:30:25.970 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [12]
+OrderPlaced: ProductOrderEvent[productId=12, quantity=4, date=2022-06-02]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:26.029 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [12]
+16:30:26.030 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name
+    from
+        product_tag t1_0
+    join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        t1_0.products_id=?
+16:30:26.046 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [12]
+Hibernate:
+    select
+        obd1_0.id,
+        obd1_0.count,
+        obd1_0.day,
+        obd1_0.product_id
+    from
+        orders_by_day obd1_0
+    where
+        (
+            obd1_0.product_id=?
+            and obd1_0.day=?
+        )
+    limit
+        ?
+16:30:26.094 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [12]
+16:30:26.094 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2022-06-02]
+16:30:26.095 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:INTEGER) <- [1]
+Hibernate:
+    select
+        next value for hibernate_sequence
+OrderPlaced: uk.ac.york.eng2.products.domain.OrdersByDay@527ba75a
+Hibernate:
+    insert
+    into
+        orders_by_day
+        (count, day, product_id, id)
+    values
+        (?, ?, ?, ?)
+16:30:26.105 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [4]
+16:30:26.105 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2022-06-02]
+16:30:26.105 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [12]
+16:30:26.105 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:BIGINT) <- [13]
+OrderPlaced: ProductOrderEvent[productId=12, quantity=5, date=2022-06-02]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:26.113 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [12]
+16:30:26.113 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name
+    from
+        product_tag t1_0
+    join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        t1_0.products_id=?
+16:30:26.114 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [12]
+Hibernate:
+    select
+        obd1_0.id,
+        obd1_0.count,
+        obd1_0.day,
+        obd1_0.product_id
+    from
+        orders_by_day obd1_0
+    where
+        (
+            obd1_0.product_id=?
+            and obd1_0.day=?
+        )
+    limit
+        ?
+16:30:26.116 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [12]
+16:30:26.116 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2022-06-02]
+16:30:26.116 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:INTEGER) <- [1]
+Hibernate:
+    update
+        orders_by_day
+    set
+        count=?,
+        day=?,
+        product_id=?
+    where
+        id=?
+16:30:26.122 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [9]
+16:30:26.122 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2022-06-02]
+16:30:26.122 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [12]
+16:30:26.122 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:BIGINT) <- [13]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:26.141 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [12]
+16:30:26.141 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name
+    from
+        product_tag t1_0
+    join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        t1_0.products_id=?
+16:30:26.143 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [12]
+Hibernate:
+    select
+        obd1_0.id,
+        obd1_0.count,
+        obd1_0.day,
+        obd1_0.product_id
+    from
+        orders_by_day obd1_0
+    where
+        (
+            obd1_0.product_id=?
+            and obd1_0.day=?
+        )
+    limit
+        ?
+16:30:26.147 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [12]
+16:30:26.147 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2022-06-02]
+16:30:26.147 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:INTEGER) <- [1]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    left join
+        product_tag t1_0
+            on p1_0.id=t1_0.products_id
+    left join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        p1_0.id=?
+16:30:26.154 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [12]
+Hibernate:
+    delete obd1_0
+    from
+        orders_by_day obd1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+OrderPlaced: ProductOrderEvent[productId=0, quantity=1, date=2022-06-02]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:26.176 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [0]
+16:30:26.176 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    delete obd1_0
+    from
+        orders_by_day obd1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:26.192 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:26.192 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Test
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        product
+        (name, unit_price, id)
+    values
+        (?, ?, ?)
+16:30:26.195 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:26.195 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.5]
+16:30:26.195 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [14]
+OrderPlaced: ProductOrderEvent[productId=14, quantity=1, date=2022-06-02]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:26.202 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [14]
+16:30:26.202 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name
+    from
+        product_tag t1_0
+    join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        t1_0.products_id=?
+16:30:26.203 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [14]
+Hibernate:
+    select
+        obd1_0.id,
+        obd1_0.count,
+        obd1_0.day,
+        obd1_0.product_id
+    from
+        orders_by_day obd1_0
+    where
+        (
+            obd1_0.product_id=?
+            and obd1_0.day=?
+        )
+    limit
+        ?
+16:30:26.205 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [14]
+16:30:26.205 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2022-06-02]
+16:30:26.205 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:INTEGER) <- [1]
+Hibernate:
+    select
+        next value for hibernate_sequence
+OrderPlaced: uk.ac.york.eng2.products.domain.OrdersByDay@5821010f
+Hibernate:
+    insert
+    into
+        orders_by_day
+        (count, day, product_id, id)
+    values
+        (?, ?, ?, ?)
+16:30:26.208 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [1]
+16:30:26.208 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2022-06-02]
+16:30:26.208 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [14]
+16:30:26.208 [Test worker] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:BIGINT) <- [15]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:26.215 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [14]
+16:30:26.215 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name
+    from
+        product_tag t1_0
+    join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        t1_0.products_id=?
+16:30:26.216 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [14]
+Hibernate:
+    select
+        obd1_0.id,
+        obd1_0.count,
+        obd1_0.day,
+        obd1_0.product_id
+    from
+        orders_by_day obd1_0
+    where
+        (
+            obd1_0.product_id=?
+            and obd1_0.day=?
+        )
+    limit
+        ?
+16:30:26.219 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [14]
+16:30:26.219 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:DATE) <- [2022-06-03]
+16:30:26.219 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:INTEGER) <- [1]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:26.231 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [15]
+16:30:26.231 [default-nioEventLoopGroup-3-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+16:30:26.248 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Revoke previously assigned partitions product_order-0
+16:30:26.248 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Member product-management-$-product-order-consumer$-definition$-intercepted-5ab4a8a3-e430-4e8e-82a6-195e8faa246a sending LeaveGroup request to coordinator localhost:59935 (id: 2147483646 rack: null) due to the consumer is being closed
+16:30:26.248 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Resetting generation and member id due to: consumer pro-actively leaving the group
+16:30:26.248 [pool-2-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Request joining group due to: consumer pro-actively leaving the group
+16:30:26.478 [pool-2-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+16:30:26.478 [pool-2-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+16:30:26.478 [pool-2-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+16:30:26.478 [pool-2-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+16:30:26.481 [pool-2-thread-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for product-management-$-product-order-consumer$-definition$-intercepted unregistered
+16:30:26.482 [kafka-admin-client-thread | adminclient-2] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-2 unregistered
+16:30:26.483 [kafka-admin-client-thread | adminclient-2] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+16:30:26.483 [kafka-admin-client-thread | adminclient-2] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+16:30:26.483 [kafka-admin-client-thread | adminclient-2] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+16:30:26.484 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+16:30:26.489 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+16:30:26.523 [Test worker] INFO  i.m.c.DefaultApplicationContext$RuntimeConfiguredEnvironment - Established active environments: [test]
+16:30:26.547 [Test worker] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values:
+	auto.include.jmx.reporter = true
+	bootstrap.controllers = []
+	bootstrap.servers = [PLAINTEXT://localhost:59935]
+	client.dns.lookup = use_all_dns_ips
+	client.id =
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	enable.metrics.push = true
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+16:30:26.549 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.8.0
+16:30:26.550 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 771b9576b00ecf5b
+16:30:26.550 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1745595026549
+16:30:26.550 [Test worker] INFO  i.m.c.kafka.admin.KafkaNewTopics - Creating new topics: [(name=product_order, numPartitions=1, replicationFactor=1, replicasAssignments=null, configs=null)]
+16:30:26.562 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+16:30:26.568 [Test worker] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection org.mariadb.jdbc.Connection@1f2fbd9c
+16:30:26.568 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+16:30:26.576 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Cleaning schema for database with qualifier [products]
+16:30:26.578 [Test worker] INFO  org.flywaydb.core.FlywayExecutor - Database: jdbc:mariadb://localhost:59938/test (MariaDB 11.7)
+16:30:26.583 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:30:26.588 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped pre-schema database level objects (execution time 00:00.000s)
+16:30:26.623 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.034s)
+16:30:26.629 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully cleaned schema `test` (execution time 00:00.005s)
+16:30:26.630 [Test worker] INFO  o.f.c.i.command.clean.CleanExecutor - Successfully dropped post-schema database level objects (execution time 00:00.000s)
+16:30:26.633 [Test worker] INFO  i.m.flyway.AbstractFlywayMigration - Running migrations for database with qualifier [products]
+16:30:26.639 [Test worker] WARN  o.f.c.i.database.base.Database - Flyway upgrade recommended: MariaDB 11.7 is newer than this version of Flyway and support has not been tested. The latest supported version of MariaDB is 11.2.
+16:30:26.644 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Schema history table `test`.`flyway_schema_history` does not exist yet
+16:30:26.644 [Test worker] INFO  o.f.core.internal.command.DbValidate - Successfully validated 4 migrations (execution time 00:00.004s)
+16:30:26.652 [Test worker] INFO  o.f.c.i.s.JdbcTableSchemaHistory - Creating Schema History table `test`.`flyway_schema_history` ...
+16:30:26.677 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Current version of schema `test`: << Empty Schema >>
+16:30:26.680 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "1 - create-products-schema"
+16:30:26.707 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "2 - add-orders by day"
+16:30:26.729 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "3 - add-product-tags"
+16:30:26.764 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Migrating schema `test` to version "999 - add test data"
+16:30:26.786 [Test worker] INFO  o.f.core.internal.command.DbMigrate - Successfully applied 4 migrations to schema `test`, now at version v999 (execution time 00:00.052s)
+16:30:26.801 [Test worker] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+16:30:26.815 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:30:26.815 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:30:26.815 [Test worker] WARN  org.hibernate.orm.incubating - HHH90006001: Encountered incubating setting [hibernate.id.db_structure_naming_strategy].  See javadoc on corresponding `org.hibernate.cfg.AvailableSettings` constant for details.
+16:30:26.857 [Test worker] INFO  i.m.l.PropertiesLoggingLevelsConfigurer - Setting log level 'TRACE' for logger: 'org.hibernate.orm.jdbc.bind'
+16:30:26.863 [Test worker] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values:
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [PLAINTEXT://localhost:59935]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = product-management-$-product-order-consumer$-definition$-intercepted
+	client.rack =
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	enable.metrics.push = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = product-management
+	group.instance.id = null
+	group.protocol = classic
+	group.remote.assignor = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.LongDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metadata.recovery.strategy = none
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.max.ms = 1000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class io.micronaut.configuration.kafka.serde.JsonObjectSerde
+
+16:30:26.865 [Test worker] INFO  o.a.k.c.t.i.KafkaMetricsCollector - initializing Kafka metrics collector
+16:30:26.868 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.8.0
+16:30:26.868 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 771b9576b00ecf5b
+16:30:26.868 [Test worker] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1745595026868
+16:30:26.870 [Test worker] INFO  o.a.k.c.c.i.LegacyKafkaConsumer - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Subscribed to topic(s): product_order
+16:30:26.870 [Test worker] INFO  i.m.c.k.p.KafkaConsumerProcessor - Kafka listener [ProductOrderConsumer#orderPlaced] subscribed to topics: [product_order]
+16:30:26.871 [pool-4-thread-1] INFO  i.m.c.k.p.KafkaConsumerProcessor - Consumer [product-management-$-product-order-consumer$-definition$-intercepted] assignments changed: null -> []
+16:30:26.875 [pool-4-thread-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Cluster ID: uvmRgsJsTluu7HvyNjvi1w
+16:30:26.876 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Discovered group coordinator localhost:59935 (id: 2147483646 rack: null)
+16:30:26.877 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] (Re-)joining group
+16:30:26.880 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Request joining group due to: need to re-join with the given member-id: product-management-$-product-order-consumer$-definition$-intercepted-9fab1444-a10a-4fe8-8ade-cc1c5547930f
+16:30:26.880 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] (Re-)joining group
+16:30:26.884 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Successfully joined group with generation Generation{generationId=5, memberId='product-management-$-product-order-consumer$-definition$-intercepted-9fab1444-a10a-4fe8-8ade-cc1c5547930f', protocol='range'}
+16:30:26.884 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Finished assignment for group at generation 5: {product-management-$-product-order-consumer$-definition$-intercepted-9fab1444-a10a-4fe8-8ade-cc1c5547930f=Assignment(partitions=[product_order-0])}
+16:30:26.887 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Successfully synced group in generation Generation{generationId=5, memberId='product-management-$-product-order-consumer$-definition$-intercepted-9fab1444-a10a-4fe8-8ade-cc1c5547930f', protocol='range'}
+16:30:26.887 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Notifying assignor about the new Assignment(partitions=[product_order-0])
+16:30:26.887 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Adding newly assigned partitions: product_order-0
+16:30:26.889 [pool-4-thread-1] INFO  o.a.k.c.c.internals.ConsumerUtils - Setting offset for partition product_order-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:59935 (id: 1 rack: null)], epoch=0}}
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete t1_0
+    from
+        tag t1_0
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:26.969 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:26.969 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Test
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        product
+        (name, unit_price, id)
+    values
+        (?, ?, ?)
+16:30:26.972 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:26.972 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.2]
+16:30:26.972 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [12]
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:26.979 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:26.979 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+16:30:26.986 [pool-4-thread-1] INFO  i.m.c.k.p.KafkaConsumerProcessor - Consumer [product-management-$-product-order-consumer$-definition$-intercepted] assignments changed: [] -> [product_order-0]
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete t1_0
+    from
+        tag t1_0
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:26.993 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:26.993 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Test
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        product
+        (name, unit_price, id)
+    values
+        (?, ?, ?)
+16:30:26.995 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:26.995 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.2]
+16:30:26.995 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [13]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+Hibernate:
+    select
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name
+    from
+        product_tag t1_0
+    join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        t1_0.products_id=?
+16:30:27.004 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [13]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:27.011 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [13]
+16:30:27.011 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name
+    from
+        product_tag t1_0
+    join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        t1_0.products_id=?
+16:30:27.012 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [13]
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete t1_0
+    from
+        tag t1_0
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:27.026 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [0]
+16:30:27.026 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete t1_0
+    from
+        tag t1_0
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete t1_0
+    from
+        tag t1_0
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:27.051 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:27.051 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Test
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        product
+        (name, unit_price, id)
+    values
+        (?, ?, ?)
+16:30:27.053 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:27.053 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.2]
+16:30:27.053 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [14]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:27.060 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [14]
+16:30:27.060 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name
+    from
+        product_tag t1_0
+    join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        t1_0.products_id=?
+16:30:27.061 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [14]
+Hibernate:
+    update
+        product
+    set
+        name=?,
+        unit_price=?
+    where
+        id=?
+16:30:27.063 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:27.063 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.4]
+16:30:27.063 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [14]
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete t1_0
+    from
+        tag t1_0
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:27.079 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test 1]
+16:30:27.079 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Test 1
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        product
+        (name, unit_price, id)
+    values
+        (?, ?, ?)
+16:30:27.081 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test 1]
+16:30:27.081 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.2]
+16:30:27.081 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [15]
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:27.087 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test 2]
+16:30:27.088 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Test 2
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        product
+        (name, unit_price, id)
+    values
+        (?, ?, ?)
+16:30:27.090 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test 2]
+16:30:27.090 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.6]
+16:30:27.090 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [16]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:27.101 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test 2]
+16:30:27.101 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name
+    from
+        product_tag t1_0
+    join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        t1_0.products_id=?
+16:30:27.102 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [16]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:27.103 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test 1]
+16:30:27.103 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        t1_0.products_id,
+        t1_1.id,
+        t1_1.name
+    from
+        product_tag t1_0
+    join
+        tag t1_1
+            on t1_1.id=t1_0.tags_id
+    where
+        t1_0.products_id=?
+16:30:27.104 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [15]
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete t1_0
+    from
+        tag t1_0
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:27.118 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [0]
+16:30:27.118 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete t1_0
+    from
+        tag t1_0
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:27.130 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:27.130 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Test
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    select
+        t1_0.id,
+        t1_0.name
+    from
+        tag t1_0
+    where
+        (
+            t1_0.name=?
+        )
+    limit
+        ?
+16:30:27.133 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [tag1]
+16:30:27.133 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        product
+        (name, unit_price, id)
+    values
+        (?, ?, ?)
+16:30:27.136 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:27.136 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.2]
+16:30:27.136 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [17]
+Hibernate:
+    insert
+    into
+        tag
+        (name, id)
+    values
+        (?, ?)
+16:30:27.136 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [tag1]
+16:30:27.137 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [18]
+Hibernate:
+    select
+        t1_0.id,
+        t1_0.name
+    from
+        tag t1_0
+    where
+        (
+            t1_0.name=?
+        )
+    limit
+        ?
+16:30:27.137 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [tag2]
+16:30:27.137 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        tag
+        (name, id)
+    values
+        (?, ?)
+16:30:27.139 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [tag2]
+16:30:27.139 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [19]
+Hibernate:
+    insert
+    into
+        product_tag
+        (products_id, tags_id)
+    values
+        (?, ?)
+16:30:27.141 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [17]
+16:30:27.141 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [18]
+Hibernate:
+    insert
+    into
+        product_tag
+        (products_id, tags_id)
+    values
+        (?, ?)
+16:30:27.142 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [17]
+16:30:27.142 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [19]
+Hibernate:
+    select
+        t1_0.id,
+        t1_0.name
+    from
+        tag t1_0
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:27.153 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test2]
+16:30:27.153 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Test2
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    select
+        t1_0.id,
+        t1_0.name
+    from
+        tag t1_0
+    where
+        (
+            t1_0.name=?
+        )
+    limit
+        ?
+16:30:27.155 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [tag1]
+16:30:27.155 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    select
+        t1_0.id,
+        t1_0.name
+    from
+        tag t1_0
+    where
+        (
+            t1_0.name=?
+        )
+    limit
+        ?
+16:30:27.156 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [tag2]
+16:30:27.156 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    insert
+    into
+        product
+        (name, unit_price, id)
+    values
+        (?, ?, ?)
+16:30:27.157 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test2]
+16:30:27.157 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.2]
+16:30:27.157 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [20]
+Hibernate:
+    insert
+    into
+        product_tag
+        (products_id, tags_id)
+    values
+        (?, ?)
+16:30:27.158 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [20]
+16:30:27.158 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [19]
+Hibernate:
+    insert
+    into
+        product_tag
+        (products_id, tags_id)
+    values
+        (?, ?)
+16:30:27.159 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [20]
+16:30:27.159 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:BIGINT) <- [18]
+Hibernate:
+    select
+        t1_0.id,
+        t1_0.name
+    from
+        tag t1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete t1_0
+    from
+        tag t1_0
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:27.177 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:27.177 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Test
+Hibernate:
+    select
+        next value for hibernate_sequence
+Hibernate:
+    insert
+    into
+        product
+        (name, unit_price, id)
+    values
+        (?, ?, ?)
+16:30:27.179 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Test]
+16:30:27.179 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:NUMERIC) <- [0.2]
+16:30:27.179 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:BIGINT) <- [21]
+Hibernate:
+    select
+        1
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:27.184 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [21]
+16:30:27.185 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+    where
+        to_delete_.products_id in (select
+            p1_0.id
+        from
+            product p1_0
+        where
+            (p1_0.id=?))
+16:30:27.189 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [21]
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+16:30:27.189 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [21]
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.id=?
+        )
+    limit
+        ?
+16:30:27.194 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:BIGINT) <- [21]
+16:30:27.194 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete p1_0
+    from
+        product p1_0
+Hibernate:
+    delete to_delete_
+    from
+        product_tag to_delete_
+Hibernate:
+    delete t1_0
+    from
+        tag t1_0
+Hibernate:
+    select
+        p1_0.id,
+        p1_0.name,
+        p1_0.unit_price
+    from
+        product p1_0
+    where
+        (
+            p1_0.name=?
+        )
+    limit
+        ?
+16:30:27.206 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [Nope]
+16:30:27.206 [default-nioEventLoopGroup-4-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:INTEGER) <- [1]
+16:30:27.219 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerRebalanceListenerInvoker - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Revoke previously assigned partitions product_order-0
+16:30:27.219 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Member product-management-$-product-order-consumer$-definition$-intercepted-9fab1444-a10a-4fe8-8ade-cc1c5547930f sending LeaveGroup request to coordinator localhost:59935 (id: 2147483646 rack: null) due to the consumer is being closed
+16:30:27.219 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Resetting generation and member id due to: consumer pro-actively leaving the group
+16:30:27.219 [pool-4-thread-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Request joining group due to: consumer pro-actively leaving the group
+16:30:27.395 [pool-4-thread-1] INFO  o.a.k.clients.FetchSessionHandler - [Consumer clientId=product-management-$-product-order-consumer$-definition$-intercepted, groupId=product-management] Node 1 sent an invalid full fetch response with extraPartitions=(product_order-0), response=(product_order-0)
+16:30:27.396 [pool-4-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+16:30:27.396 [pool-4-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+16:30:27.396 [pool-4-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.telemetry.internals.ClientTelemetryReporter
+16:30:27.396 [pool-4-thread-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+16:30:27.398 [pool-4-thread-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for product-management-$-product-order-consumer$-definition$-intercepted unregistered
+16:30:27.399 [kafka-admin-client-thread | adminclient-3] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-3 unregistered
+16:30:27.400 [kafka-admin-client-thread | adminclient-3] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+16:30:27.400 [kafka-admin-client-thread | adminclient-3] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+16:30:27.400 [kafka-admin-client-thread | adminclient-3] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+16:30:27.400 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+16:30:27.406 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+> Task :test
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.8/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+BUILD SUCCESSFUL in 36s
+7 actionable tasks: 4 executed, 3 up-to-date
+16:30:28: Execution finished 'test'.

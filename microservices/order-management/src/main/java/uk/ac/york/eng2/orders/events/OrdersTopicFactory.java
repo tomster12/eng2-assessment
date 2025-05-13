@@ -14,6 +14,6 @@ public class OrdersTopicFactory {
 
     @Bean
     NewTopic productOrderTopic() {
-        return new NewTopic(TOPIC_PRODUCT_ORDER, 1, (short) 1);
+        return new NewTopic(TOPIC_PRODUCT_ORDER, 3, (short) 3);
     }
 }

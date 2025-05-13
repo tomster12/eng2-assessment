@@ -1,96 +1,102 @@
-workspace "To-Do" "Example to-do list system" {
-
+workspace {
     model {
-      u = person "User"
-      admin = person "Administrator"
-      s = softwareSystem "To-Do System" {
-          ui = container "Swagger UI"
+        user = person "Customer"
+        admin = person "Administrator"
 
-          micronaut = container "To-Do Microservice" {
-            domain = component "Domain objects and DTOs"
-            services = component "Services"
-            repos = component "Repositories"
-            events = component "Kafka consumers and producers"
-            currency_gateway = component "Currency API Gateway"
-            resources = component "Resources"
-          }
+        system = softwareSystem "Shopping System" {
+            pm_microservice = container "Product Management Microservice" {
+                pm_resources = component "Resources"
+                pm_repos = component "Repositories"
+                pm_domain = component "Domain Objects"
+                pm_events = component "Events"
 
-          counts = container "Edit Count Consumers" {
-            cdomain = component "Domain objects and DTOs"
-            crepos = component "Repositories"
-            cevents = component "Kafka consumers and producers"
-          }
+            }
 
-          database = container "To-Do Database" "" "MariaDB" "database"
-          countsdb = container "Edit Counts Database" "" "MariaDB" "database"
-          kafka = container "Kafka Cluster"
-          kafkaui = container "Kafka-UI Webapp" "" "" webapp
-          adminer = container "Adminer Webapp" "" "" webapp
-      }
-      currency = softwareSystem "Currency API" {
-        tags external
-      }
+            om_microservice = container "Order Management Microservice" {
+                om_resources = component "Resources"
+                om_repos = component "Repositories"
+                om_domain  = component "Domain Objects"
+                om_events = component "Events"
+            }
 
-      s -> currency "Invokes API"
+            kafka = container "Kafka" "" "" kafka
 
-      u -> ui "Uses"
-      admin -> kafkaui "Manages"
-      admin -> adminer "Uses"
+            pm_db = container "Products DB" "" "MariaDB" database
+            om_db = container "Orders DB" "" "MariaDB" database
 
-      ui -> micronaut "Interacts with HTTP API"
+            pm_swagger_ui = container "Product Management Swagger UI" "" "" webapp
+            om_swagger_ui = container "Order Management Swagger UI" "" "" webapp
+            kafka_ui = container "Kafka UI"  "" "" webapp
+            db_ui = container "Adminer UI"  "" "" webapp
+        }
 
-      micronaut -> database "Reads from and writes to"
-      micronaut -> kafka "Consumes and produces events"
-      micronaut -> currency "Invokes API"
+        user -> pm_swagger_ui "Uses"
+        user -> om_swagger_ui "Uses"
+        admin -> kafka_ui "Monitors"
+        admin -> db_ui "Uses"
 
-      counts -> countsdb "Reads from and writes to"
-      counts -> kafka "Consumes and produces events"
+        pm_swagger_ui -> pm_microservice "Interacts via HTTP"
+        om_swagger_ui -> om_microservice "Interacts via HTTP"
+        kafka_ui -> kafka "Manages"
+        db_ui -> pm_db "Manages"
+        db_ui -> om_db "Manages"
 
-      kafkaui -> kafka "Manages"
-      adminer -> database "Manages"
-      adminer -> countsdb "Manages"
+        pm_microservice -> kafka "Consumes"
+        pm_microservice -> pm_db "Reads & Writes"
+        om_microservice -> kafka "Publishes"
+        om_microservice -> om_db "Reads & Writes"
 
-      repos -> domain "Creates and updates"
-      repos -> database "Queries and writes to"
-      services -> domain "Runs business workflows on"
-      services -> repos "Uses"
-      resources -> repos "Uses"
-      resources -> events "Uses"
-      resources -> currency_gateway "Uses"
-      resources -> services "Uses"
-      resources -> domain "Reads and updates"
-      currency_gateway -> currency "Invokes"
-      ui -> resources "Invokes"
-      events -> kafka "Consumes and produces events in"
+        om_microservice -> pm_microservice "Queries"
+        om_resources -> pm_resources "Queries"
 
-      crepos -> cdomain "Creates and updates"
-      crepos -> countsdb "Queries and writes to"
-      cevents -> kafka "Consumes and produces events in"
+        pm_swagger_ui -> pm_resources "Interfaces"
+        pm_resources -> pm_repos "Read & Writes"
+        pm_resources -> pm_events "Consumes"
+        pm_resources -> pm_domain "Uses"
+        pm_repos -> pm_domain "Uses"
+        pm_repos -> pm_db "Read & Writes"
+        pm_events -> kafka "Consumes"
+
+        om_swagger_ui -> om_resources "Interfaces"
+        om_resources -> om_repos "Read & Writes"
+        om_resources -> om_events "Publishes"
+        om_resources -> om_domain "Uses"
+        om_repos -> om_domain "Uses"
+        om_repos -> om_db "Read & Writes"
+        om_events -> kafka "Publishes"
     }
 
     views {
-        theme default
-        systemContext s {
+        systemContext system {
             include *
         }
-        container s {
+
+        container system {
             include *
         }
-        component micronaut {
+
+        component pm_microservice {
             include *
         }
-        component counts {
+
+        component om_microservice {
             include *
         }
+
         styles {
+            element "kafka" {
+                shape "Folder"
+                background "#f78beb"
+            }
+
             element "database" {
-              shape Cylinder
+                shape "Cylinder"
+                background "#6197c9"
             }
+
             element "webapp" {
-              shape WebBrowser
-            }
-            element external {
-              background gray
+                shape "WebBrowser"
+                background "#e08f4c"
             }
         }
     }
