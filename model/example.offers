@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dis:Catalogue xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dis="http://cs.york.ac.uk/eng2/202425/offers">
+  <products name="Large Chocolate Cake" category="//@categories.0/@subcategories.0" tags="//@tags.0 //@tags.1 //@tags.2"/>
+  <products name="Bakewell Tart" category="//@categories.0"/>
+  <products name="Pizza" tags="//@tags.3"/>
+  <products name="Large Pizza" tags="//@tags.0 //@tags.3"/>
+  <products name="Large Ice Cream" category="//@categories.0" tags="//@tags.0 //@tags.4"/>
+  <categories name="Sweet">
+    <subcategories name="Cake"/>
+  </categories>
+  <tags name="Large"/>
+  <tags name="Cake"/>
+  <tags name="Chocolate"/>
+  <tags name="Pizza"/>
+  <tags name="Ice Cream"/>
+  <rules name="Bakewell Special" triggersAlways="//@rules.1">
+    <conditions xsi:type="dis:ContainsTargetCondition" minCount="1">
+      <target xsi:type="dis:ProductTarget" product="//@products.1"/>
+    </conditions>
+    <conditions xsi:type="dis:MaxDailyProductOrdersCondition" product="//@products.1" maxCount="10"/>
+    <actions xsi:type="dis:TargetPercentDiscountAction" percentage="10.0">
+      <target xsi:type="dis:ProductTarget" product="//@products.1"/>
+    </actions>
+  </rules>
+  <rules name="Large Pizza + Icecream" triggersIfMatch="//@rules.3" triggersIfNotMatch="//@rules.2">
+    <conditions xsi:type="dis:ContainsTargetCondition" minCount="2">
+      <target xsi:type="dis:ProductWithTagTarget" tags="//@tags.0 //@tags.3"/>
+    </conditions>
+    <actions xsi:type="dis:ReplaceTargetCostAction" maxCount="2" cost="5.0">
+      <target xsi:type="dis:ProductWithTagTarget" tags="//@tags.0 //@tags.3"/>
+    </actions>
+    <actions xsi:type="dis:ReplaceTargetCostAction" maxCount="1">
+      <target xsi:type="dis:ProductWithTagTarget" tags="//@tags.4"/>
+    </actions>
+  </rules>
+  <rules name="241 Pizza" triggersAlways="//@rules.3">
+    <conditions xsi:type="dis:ContainsTargetCondition" minCount="2">
+      <target xsi:type="dis:ProductWithTagTarget" tags="//@tags.3"/>
+    </conditions>
+    <actions xsi:type="dis:ReplaceTargetCostAction" maxCount="1">
+      <target xsi:type="dis:ProductWithTagTarget" tags="//@tags.3"/>
+    </actions>
+  </rules>
+  <rules name="Christmas Discount" triggersIfNotMatch="//@rules.4">
+    <conditions xsi:type="dis:MinimumTotalOrderCondition" total="60.0"/>
+    <conditions xsi:type="dis:RecurringYearlyDateCondition" month="12" day="25"/>
+    <actions xsi:type="dis:TotalPercentDiscountAction" percentage="10.0"/>
+  </rules>
+  <rules name="Chocolate Deal">
+    <conditions xsi:type="dis:ContainsTargetCondition" minCount="1">
+      <target xsi:type="dis:ProductWithTagTarget" tags="//@tags.2 //@tags.1"/>
+    </conditions>
+    <conditions xsi:type="dis:MinimumTotalOrderCondition" total="50.0"/>
+    <actions xsi:type="dis:TotalAbsoluteDiscountAction" amount="5.0"/>
+  </rules>
+</dis:Catalogue>

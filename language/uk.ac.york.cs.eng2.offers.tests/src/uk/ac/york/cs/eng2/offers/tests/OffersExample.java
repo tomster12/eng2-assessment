@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import uk.ac.york.cs.eng2.offers.Model;
+import uk.ac.york.cs.eng2.offers.Catalogue;
 import uk.ac.york.cs.eng2.offers.OffersFactory;
 import uk.ac.york.cs.eng2.offers.OffersPackage;
 
@@ -60,7 +60,7 @@ public class OffersExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.offers"));
-				Model root = OffersFactory.eINSTANCE.createModel();
+				Catalogue root = OffersFactory.eINSTANCE.createCatalogue();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
 			}

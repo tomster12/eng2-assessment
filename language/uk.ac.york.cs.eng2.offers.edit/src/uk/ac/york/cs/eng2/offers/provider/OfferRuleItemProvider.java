@@ -253,37 +253,42 @@ public class OfferRuleItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(OffersPackage.Literals.OFFER_RULE__CONDITIONS,
-				 OffersFactory.eINSTANCE.createProductTagCondition()));
+				 OffersFactory.eINSTANCE.createContainsTargetCondition()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(OffersPackage.Literals.OFFER_RULE__CONDITIONS,
-				 OffersFactory.eINSTANCE.createMinOrderValueCondition()));
+				 OffersFactory.eINSTANCE.createMaxDailyProductOrdersCondition()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(OffersPackage.Literals.OFFER_RULE__CONDITIONS,
-				 OffersFactory.eINSTANCE.createProductNameCondition()));
+				 OffersFactory.eINSTANCE.createMinimumTotalOrderCondition()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(OffersPackage.Literals.OFFER_RULE__CONDITIONS,
+				 OffersFactory.eINSTANCE.createRecurringYearlyDateCondition()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(OffersPackage.Literals.OFFER_RULE__ACTIONS,
-				 OffersFactory.eINSTANCE.createPercentageDiscountAction()));
+				 OffersFactory.eINSTANCE.createTotalPercentDiscountAction()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(OffersPackage.Literals.OFFER_RULE__ACTIONS,
-				 OffersFactory.eINSTANCE.createFixedDiscountAction()));
+				 OffersFactory.eINSTANCE.createTotalAbsoluteDiscountAction()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(OffersPackage.Literals.OFFER_RULE__ACTIONS,
-				 OffersFactory.eINSTANCE.createAddFreeProductAction()));
+				 OffersFactory.eINSTANCE.createTargetPercentDiscountAction()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(OffersPackage.Literals.OFFER_RULE__ACTIONS,
-				 OffersFactory.eINSTANCE.createAddDiscountedProductAction()));
+				 OffersFactory.eINSTANCE.createReplaceTargetCostAction()));
 	}
 
 	/**

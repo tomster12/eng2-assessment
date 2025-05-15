@@ -70,15 +70,15 @@ public interface Product extends EObject {
 	void setCategory(Category value);
 
 	/**
-	 * Returns the value of the '<em><b>Tags</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Tags</b></em>' reference list.
+	 * The list contents are of type {@link uk.ac.york.cs.eng2.offers.Tag}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Tags</em>' attribute list.
+	 * @return the value of the '<em>Tags</em>' reference list.
 	 * @see uk.ac.york.cs.eng2.offers.OffersPackage#getProduct_Tags()
 	 * @model
 	 * @generated
 	 */
-	EList<String> getTags();
+	EList<Tag> getTags();
 
 } // Product

@@ -14,11 +14,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import uk.ac.york.cs.eng2.offers.Category;
 import uk.ac.york.cs.eng2.offers.OffersPackage;
 import uk.ac.york.cs.eng2.offers.Product;
+import uk.ac.york.cs.eng2.offers.Tag;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,14 +68,14 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	protected Category category;
 
 	/**
-	 * The cached value of the '{@link #getTags() <em>Tags</em>}' attribute list.
+	 * The cached value of the '{@link #getTags() <em>Tags</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTags()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> tags;
+	protected EList<Tag> tags;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,9 +165,9 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 	 * @generated
 	 */
 	@Override
-	public EList<String> getTags() {
+	public EList<Tag> getTags() {
 		if (tags == null) {
-			tags = new EDataTypeUniqueEList<String>(String.class, this, OffersPackage.PRODUCT__TAGS);
+			tags = new EObjectResolvingEList<Tag>(Tag.class, this, OffersPackage.PRODUCT__TAGS);
 		}
 		return tags;
 	}
@@ -207,7 +208,7 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 				return;
 			case OffersPackage.PRODUCT__TAGS:
 				getTags().clear();
-				getTags().addAll((Collection<? extends String>)newValue);
+				getTags().addAll((Collection<? extends Tag>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -264,8 +265,6 @@ public class ProductImpl extends MinimalEObjectImpl.Container implements Product
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", tags: ");
-		result.append(tags);
 		result.append(')');
 		return result.toString();
 	}

@@ -22,13 +22,13 @@ public interface OffersFactory extends EFactory {
 	OffersFactory eINSTANCE = uk.ac.york.cs.eng2.offers.impl.OffersFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Model</em>'.
+	 * Returns a new object of class '<em>Catalogue</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Model</em>'.
+	 * @return a new object of class '<em>Catalogue</em>'.
 	 * @generated
 	 */
-	Model createModel();
+	Catalogue createCatalogue();
 
 	/**
 	 * Returns a new object of class '<em>Product</em>'.
@@ -49,6 +49,15 @@ public interface OffersFactory extends EFactory {
 	Category createCategory();
 
 	/**
+	 * Returns a new object of class '<em>Tag</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Tag</em>'.
+	 * @generated
+	 */
+	Tag createTag();
+
+	/**
 	 * Returns a new object of class '<em>Offer Rule</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,67 +67,103 @@ public interface OffersFactory extends EFactory {
 	OfferRule createOfferRule();
 
 	/**
-	 * Returns a new object of class '<em>Product Tag Condition</em>'.
+	 * Returns a new object of class '<em>Product Target</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Product Tag Condition</em>'.
+	 * @return a new object of class '<em>Product Target</em>'.
 	 * @generated
 	 */
-	ProductTagCondition createProductTagCondition();
+	ProductTarget createProductTarget();
 
 	/**
-	 * Returns a new object of class '<em>Min Order Value Condition</em>'.
+	 * Returns a new object of class '<em>Product In Category Target</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Min Order Value Condition</em>'.
+	 * @return a new object of class '<em>Product In Category Target</em>'.
 	 * @generated
 	 */
-	MinOrderValueCondition createMinOrderValueCondition();
+	ProductInCategoryTarget createProductInCategoryTarget();
 
 	/**
-	 * Returns a new object of class '<em>Product Name Condition</em>'.
+	 * Returns a new object of class '<em>Product With Tag Target</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Product Name Condition</em>'.
+	 * @return a new object of class '<em>Product With Tag Target</em>'.
 	 * @generated
 	 */
-	ProductNameCondition createProductNameCondition();
+	ProductWithTagTarget createProductWithTagTarget();
 
 	/**
-	 * Returns a new object of class '<em>Percentage Discount Action</em>'.
+	 * Returns a new object of class '<em>Contains Target Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Percentage Discount Action</em>'.
+	 * @return a new object of class '<em>Contains Target Condition</em>'.
 	 * @generated
 	 */
-	PercentageDiscountAction createPercentageDiscountAction();
+	ContainsTargetCondition createContainsTargetCondition();
 
 	/**
-	 * Returns a new object of class '<em>Fixed Discount Action</em>'.
+	 * Returns a new object of class '<em>Max Daily Product Orders Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Fixed Discount Action</em>'.
+	 * @return a new object of class '<em>Max Daily Product Orders Condition</em>'.
 	 * @generated
 	 */
-	FixedDiscountAction createFixedDiscountAction();
+	MaxDailyProductOrdersCondition createMaxDailyProductOrdersCondition();
 
 	/**
-	 * Returns a new object of class '<em>Add Free Product Action</em>'.
+	 * Returns a new object of class '<em>Minimum Total Order Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Add Free Product Action</em>'.
+	 * @return a new object of class '<em>Minimum Total Order Condition</em>'.
 	 * @generated
 	 */
-	AddFreeProductAction createAddFreeProductAction();
+	MinimumTotalOrderCondition createMinimumTotalOrderCondition();
 
 	/**
-	 * Returns a new object of class '<em>Add Discounted Product Action</em>'.
+	 * Returns a new object of class '<em>Recurring Yearly Date Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Add Discounted Product Action</em>'.
+	 * @return a new object of class '<em>Recurring Yearly Date Condition</em>'.
 	 * @generated
 	 */
-	AddDiscountedProductAction createAddDiscountedProductAction();
+	RecurringYearlyDateCondition createRecurringYearlyDateCondition();
+
+	/**
+	 * Returns a new object of class '<em>Total Percent Discount Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Total Percent Discount Action</em>'.
+	 * @generated
+	 */
+	TotalPercentDiscountAction createTotalPercentDiscountAction();
+
+	/**
+	 * Returns a new object of class '<em>Total Absolute Discount Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Total Absolute Discount Action</em>'.
+	 * @generated
+	 */
+	TotalAbsoluteDiscountAction createTotalAbsoluteDiscountAction();
+
+	/**
+	 * Returns a new object of class '<em>Target Percent Discount Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Target Percent Discount Action</em>'.
+	 * @generated
+	 */
+	TargetPercentDiscountAction createTargetPercentDiscountAction();
+
+	/**
+	 * Returns a new object of class '<em>Replace Target Cost Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Replace Target Cost Action</em>'.
+	 * @generated
+	 */
+	ReplaceTargetCostAction createReplaceTargetCostAction();
 
 	/**
 	 * Returns the package supported by this factory.

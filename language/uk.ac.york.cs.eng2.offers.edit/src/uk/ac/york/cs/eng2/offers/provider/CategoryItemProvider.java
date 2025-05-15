@@ -64,7 +64,6 @@ public class CategoryItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addContainerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,28 +86,6 @@ public class CategoryItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Container feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addContainerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Category_container_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Category_container_feature", "_UI_Category_type"),
-				 OffersPackage.Literals.CATEGORY__CONTAINER,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}

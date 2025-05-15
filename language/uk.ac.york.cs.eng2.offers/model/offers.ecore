@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="offers" nsURI="http://cs.york.ac.uk/eng2/202425/offers" nsPrefix="dis">
-  <eClassifiers xsi:type="ecore:EClass" name="Model">
+  <eClassifiers xsi:type="ecore:EClass" name="Catalogue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="products" upperBound="-1"
         eType="#//Product" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//Category" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//Tag"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rules" upperBound="-1"
         eType="#//OfferRule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Product">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//Category"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tags" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//Tag"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Category">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//Category"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subcategories" upperBound="-1"
         eType="#//Category" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tag">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OfferRule">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -30,28 +34,49 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggersIfNotMatch" eType="#//OfferRule"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggersAlways" eType="#//OfferRule"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Target" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductTarget" eSuperTypes="#//Target">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="product" eType="#//Product"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductInCategoryTarget" eSuperTypes="#//Target">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//Category"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProductWithTagTarget" eSuperTypes="#//Target">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//Tag"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductTagCondition" eSuperTypes="#//Condition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ContainsTargetCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Target"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MinOrderValueCondition" eSuperTypes="#//Condition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minAmount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MaxDailyProductOrdersCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="product" eType="#//Product"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ProductNameCondition" eSuperTypes="#//Condition">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="productName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MinimumTotalOrderCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="total" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecurringYearlyDateCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="month" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="day" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Action" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PercentageDiscountAction" eSuperTypes="#//Action">
+  <eClassifiers xsi:type="ecore:EClass" name="TotalPercentDiscountAction" eSuperTypes="#//Action">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FixedDiscountAction" eSuperTypes="#//Action">
+  <eClassifiers xsi:type="ecore:EClass" name="TotalAbsoluteDiscountAction" eSuperTypes="#//Action">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AddFreeProductAction" eSuperTypes="#//Action">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="productName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TargetPercentDiscountAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Target"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AddDiscountedProductAction" eSuperTypes="#//Action">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="productName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="discountedPrice" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReplaceTargetCostAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Target"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
 </ecore:EPackage>

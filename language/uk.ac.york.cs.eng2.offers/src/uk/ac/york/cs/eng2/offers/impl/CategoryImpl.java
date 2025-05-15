@@ -30,7 +30,6 @@ import uk.ac.york.cs.eng2.offers.OffersPackage;
  * </p>
  * <ul>
  *   <li>{@link uk.ac.york.cs.eng2.offers.impl.CategoryImpl#getName <em>Name</em>}</li>
- *   <li>{@link uk.ac.york.cs.eng2.offers.impl.CategoryImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link uk.ac.york.cs.eng2.offers.impl.CategoryImpl#getSubcategories <em>Subcategories</em>}</li>
  * </ul>
  *
@@ -56,16 +55,6 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getContainer() <em>Container</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContainer()
-	 * @generated
-	 * @ordered
-	 */
-	protected Category container;
 
 	/**
 	 * The cached value of the '{@link #getSubcategories() <em>Subcategories</em>}' containment reference list.
@@ -125,46 +114,6 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	 * @generated
 	 */
 	@Override
-	public Category getContainer() {
-		if (container != null && container.eIsProxy()) {
-			InternalEObject oldContainer = (InternalEObject)container;
-			container = (Category)eResolveProxy(oldContainer);
-			if (container != oldContainer) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OffersPackage.CATEGORY__CONTAINER, oldContainer, container));
-			}
-		}
-		return container;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Category basicGetContainer() {
-		return container;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setContainer(Category newContainer) {
-		Category oldContainer = container;
-		container = newContainer;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OffersPackage.CATEGORY__CONTAINER, oldContainer, container));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<Category> getSubcategories() {
 		if (subcategories == null) {
 			subcategories = new EObjectContainmentEList<Category>(Category.class, this, OffersPackage.CATEGORY__SUBCATEGORIES);
@@ -196,9 +145,6 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 		switch (featureID) {
 			case OffersPackage.CATEGORY__NAME:
 				return getName();
-			case OffersPackage.CATEGORY__CONTAINER:
-				if (resolve) return getContainer();
-				return basicGetContainer();
 			case OffersPackage.CATEGORY__SUBCATEGORIES:
 				return getSubcategories();
 		}
@@ -216,9 +162,6 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 		switch (featureID) {
 			case OffersPackage.CATEGORY__NAME:
 				setName((String)newValue);
-				return;
-			case OffersPackage.CATEGORY__CONTAINER:
-				setContainer((Category)newValue);
 				return;
 			case OffersPackage.CATEGORY__SUBCATEGORIES:
 				getSubcategories().clear();
@@ -239,9 +182,6 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 			case OffersPackage.CATEGORY__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case OffersPackage.CATEGORY__CONTAINER:
-				setContainer((Category)null);
-				return;
 			case OffersPackage.CATEGORY__SUBCATEGORIES:
 				getSubcategories().clear();
 				return;
@@ -259,8 +199,6 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 		switch (featureID) {
 			case OffersPackage.CATEGORY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case OffersPackage.CATEGORY__CONTAINER:
-				return container != null;
 			case OffersPackage.CATEGORY__SUBCATEGORIES:
 				return subcategories != null && !subcategories.isEmpty();
 		}

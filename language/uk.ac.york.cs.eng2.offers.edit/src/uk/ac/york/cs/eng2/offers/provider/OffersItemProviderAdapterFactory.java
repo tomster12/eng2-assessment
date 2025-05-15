@@ -72,26 +72,26 @@ public class OffersItemProviderAdapterFactory extends OffersAdapterFactory imple
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.Model} instances.
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.Catalogue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModelItemProvider modelItemProvider;
+	protected CatalogueItemProvider catalogueItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.Model}.
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.Catalogue}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createModelAdapter() {
-		if (modelItemProvider == null) {
-			modelItemProvider = new ModelItemProvider(this);
+	public Adapter createCatalogueAdapter() {
+		if (catalogueItemProvider == null) {
+			catalogueItemProvider = new CatalogueItemProvider(this);
 		}
 
-		return modelItemProvider;
+		return catalogueItemProvider;
 	}
 
 	/**
@@ -141,6 +141,29 @@ public class OffersItemProviderAdapterFactory extends OffersAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.Tag} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TagItemProvider tagItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.Tag}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTagAdapter() {
+		if (tagItemProvider == null) {
+			tagItemProvider = new TagItemProvider(this);
+		}
+
+		return tagItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.OfferRule} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -164,164 +187,256 @@ public class OffersItemProviderAdapterFactory extends OffersAdapterFactory imple
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.ProductTagCondition} instances.
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.ProductTarget} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProductTagConditionItemProvider productTagConditionItemProvider;
+	protected ProductTargetItemProvider productTargetItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.ProductTagCondition}.
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.ProductTarget}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createProductTagConditionAdapter() {
-		if (productTagConditionItemProvider == null) {
-			productTagConditionItemProvider = new ProductTagConditionItemProvider(this);
+	public Adapter createProductTargetAdapter() {
+		if (productTargetItemProvider == null) {
+			productTargetItemProvider = new ProductTargetItemProvider(this);
 		}
 
-		return productTagConditionItemProvider;
+		return productTargetItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.MinOrderValueCondition} instances.
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.ProductInCategoryTarget} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MinOrderValueConditionItemProvider minOrderValueConditionItemProvider;
+	protected ProductInCategoryTargetItemProvider productInCategoryTargetItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.MinOrderValueCondition}.
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.ProductInCategoryTarget}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createMinOrderValueConditionAdapter() {
-		if (minOrderValueConditionItemProvider == null) {
-			minOrderValueConditionItemProvider = new MinOrderValueConditionItemProvider(this);
+	public Adapter createProductInCategoryTargetAdapter() {
+		if (productInCategoryTargetItemProvider == null) {
+			productInCategoryTargetItemProvider = new ProductInCategoryTargetItemProvider(this);
 		}
 
-		return minOrderValueConditionItemProvider;
+		return productInCategoryTargetItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.ProductNameCondition} instances.
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.ProductWithTagTarget} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ProductNameConditionItemProvider productNameConditionItemProvider;
+	protected ProductWithTagTargetItemProvider productWithTagTargetItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.ProductNameCondition}.
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.ProductWithTagTarget}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createProductNameConditionAdapter() {
-		if (productNameConditionItemProvider == null) {
-			productNameConditionItemProvider = new ProductNameConditionItemProvider(this);
+	public Adapter createProductWithTagTargetAdapter() {
+		if (productWithTagTargetItemProvider == null) {
+			productWithTagTargetItemProvider = new ProductWithTagTargetItemProvider(this);
 		}
 
-		return productNameConditionItemProvider;
+		return productWithTagTargetItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.PercentageDiscountAction} instances.
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.ContainsTargetCondition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PercentageDiscountActionItemProvider percentageDiscountActionItemProvider;
+	protected ContainsTargetConditionItemProvider containsTargetConditionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.PercentageDiscountAction}.
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.ContainsTargetCondition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPercentageDiscountActionAdapter() {
-		if (percentageDiscountActionItemProvider == null) {
-			percentageDiscountActionItemProvider = new PercentageDiscountActionItemProvider(this);
+	public Adapter createContainsTargetConditionAdapter() {
+		if (containsTargetConditionItemProvider == null) {
+			containsTargetConditionItemProvider = new ContainsTargetConditionItemProvider(this);
 		}
 
-		return percentageDiscountActionItemProvider;
+		return containsTargetConditionItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.FixedDiscountAction} instances.
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.MaxDailyProductOrdersCondition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FixedDiscountActionItemProvider fixedDiscountActionItemProvider;
+	protected MaxDailyProductOrdersConditionItemProvider maxDailyProductOrdersConditionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.FixedDiscountAction}.
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.MaxDailyProductOrdersCondition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createFixedDiscountActionAdapter() {
-		if (fixedDiscountActionItemProvider == null) {
-			fixedDiscountActionItemProvider = new FixedDiscountActionItemProvider(this);
+	public Adapter createMaxDailyProductOrdersConditionAdapter() {
+		if (maxDailyProductOrdersConditionItemProvider == null) {
+			maxDailyProductOrdersConditionItemProvider = new MaxDailyProductOrdersConditionItemProvider(this);
 		}
 
-		return fixedDiscountActionItemProvider;
+		return maxDailyProductOrdersConditionItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.AddFreeProductAction} instances.
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.MinimumTotalOrderCondition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AddFreeProductActionItemProvider addFreeProductActionItemProvider;
+	protected MinimumTotalOrderConditionItemProvider minimumTotalOrderConditionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.AddFreeProductAction}.
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.MinimumTotalOrderCondition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createAddFreeProductActionAdapter() {
-		if (addFreeProductActionItemProvider == null) {
-			addFreeProductActionItemProvider = new AddFreeProductActionItemProvider(this);
+	public Adapter createMinimumTotalOrderConditionAdapter() {
+		if (minimumTotalOrderConditionItemProvider == null) {
+			minimumTotalOrderConditionItemProvider = new MinimumTotalOrderConditionItemProvider(this);
 		}
 
-		return addFreeProductActionItemProvider;
+		return minimumTotalOrderConditionItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.AddDiscountedProductAction} instances.
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.RecurringYearlyDateCondition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AddDiscountedProductActionItemProvider addDiscountedProductActionItemProvider;
+	protected RecurringYearlyDateConditionItemProvider recurringYearlyDateConditionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.AddDiscountedProductAction}.
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.RecurringYearlyDateCondition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createAddDiscountedProductActionAdapter() {
-		if (addDiscountedProductActionItemProvider == null) {
-			addDiscountedProductActionItemProvider = new AddDiscountedProductActionItemProvider(this);
+	public Adapter createRecurringYearlyDateConditionAdapter() {
+		if (recurringYearlyDateConditionItemProvider == null) {
+			recurringYearlyDateConditionItemProvider = new RecurringYearlyDateConditionItemProvider(this);
 		}
 
-		return addDiscountedProductActionItemProvider;
+		return recurringYearlyDateConditionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.TotalPercentDiscountAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TotalPercentDiscountActionItemProvider totalPercentDiscountActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.TotalPercentDiscountAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTotalPercentDiscountActionAdapter() {
+		if (totalPercentDiscountActionItemProvider == null) {
+			totalPercentDiscountActionItemProvider = new TotalPercentDiscountActionItemProvider(this);
+		}
+
+		return totalPercentDiscountActionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.TotalAbsoluteDiscountAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TotalAbsoluteDiscountActionItemProvider totalAbsoluteDiscountActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.TotalAbsoluteDiscountAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTotalAbsoluteDiscountActionAdapter() {
+		if (totalAbsoluteDiscountActionItemProvider == null) {
+			totalAbsoluteDiscountActionItemProvider = new TotalAbsoluteDiscountActionItemProvider(this);
+		}
+
+		return totalAbsoluteDiscountActionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.TargetPercentDiscountAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TargetPercentDiscountActionItemProvider targetPercentDiscountActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.TargetPercentDiscountAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTargetPercentDiscountActionAdapter() {
+		if (targetPercentDiscountActionItemProvider == null) {
+			targetPercentDiscountActionItemProvider = new TargetPercentDiscountActionItemProvider(this);
+		}
+
+		return targetPercentDiscountActionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uk.ac.york.cs.eng2.offers.ReplaceTargetCostAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReplaceTargetCostActionItemProvider replaceTargetCostActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uk.ac.york.cs.eng2.offers.ReplaceTargetCostAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReplaceTargetCostActionAdapter() {
+		if (replaceTargetCostActionItemProvider == null) {
+			replaceTargetCostActionItemProvider = new ReplaceTargetCostActionItemProvider(this);
+		}
+
+		return replaceTargetCostActionItemProvider;
 	}
 
 	/**
@@ -429,17 +544,22 @@ public class OffersItemProviderAdapterFactory extends OffersAdapterFactory imple
 	 */
 	@Override
 	public void dispose() {
-		if (modelItemProvider != null) modelItemProvider.dispose();
+		if (catalogueItemProvider != null) catalogueItemProvider.dispose();
 		if (productItemProvider != null) productItemProvider.dispose();
 		if (categoryItemProvider != null) categoryItemProvider.dispose();
+		if (tagItemProvider != null) tagItemProvider.dispose();
 		if (offerRuleItemProvider != null) offerRuleItemProvider.dispose();
-		if (productTagConditionItemProvider != null) productTagConditionItemProvider.dispose();
-		if (minOrderValueConditionItemProvider != null) minOrderValueConditionItemProvider.dispose();
-		if (productNameConditionItemProvider != null) productNameConditionItemProvider.dispose();
-		if (percentageDiscountActionItemProvider != null) percentageDiscountActionItemProvider.dispose();
-		if (fixedDiscountActionItemProvider != null) fixedDiscountActionItemProvider.dispose();
-		if (addFreeProductActionItemProvider != null) addFreeProductActionItemProvider.dispose();
-		if (addDiscountedProductActionItemProvider != null) addDiscountedProductActionItemProvider.dispose();
+		if (productTargetItemProvider != null) productTargetItemProvider.dispose();
+		if (productInCategoryTargetItemProvider != null) productInCategoryTargetItemProvider.dispose();
+		if (productWithTagTargetItemProvider != null) productWithTagTargetItemProvider.dispose();
+		if (containsTargetConditionItemProvider != null) containsTargetConditionItemProvider.dispose();
+		if (maxDailyProductOrdersConditionItemProvider != null) maxDailyProductOrdersConditionItemProvider.dispose();
+		if (minimumTotalOrderConditionItemProvider != null) minimumTotalOrderConditionItemProvider.dispose();
+		if (recurringYearlyDateConditionItemProvider != null) recurringYearlyDateConditionItemProvider.dispose();
+		if (totalPercentDiscountActionItemProvider != null) totalPercentDiscountActionItemProvider.dispose();
+		if (totalAbsoluteDiscountActionItemProvider != null) totalAbsoluteDiscountActionItemProvider.dispose();
+		if (targetPercentDiscountActionItemProvider != null) targetPercentDiscountActionItemProvider.dispose();
+		if (replaceTargetCostActionItemProvider != null) replaceTargetCostActionItemProvider.dispose();
 	}
 
 }

@@ -1,2 +1,95 @@
-// Write your EVL validation rules here.
-// To run them, right-click on the Sirius diagram background and select "Validate diagram".
+
+context Product {
+
+  @critique
+  constraint UniqueName {
+    check : Product.all.select(p | p.name = self.name).size = 1
+    message : "Product name '" + self.name + "' is duplicated."
+  }
+}
+
+context TotalPercentDiscountAction {
+  @critique
+  constraint PercentageInRange {
+    check : self.percentage >= 0 and self.percentage <= 100
+    message : "Percentage must be between 0 and 100."
+  }
+}
+
+context TargetPercentDiscountAction {
+  @critique
+  constraint PercentageInRange {
+    check : self.percentage >= 0 and self.percentage <= 100
+    message : "Percentage must be between 0 and 100."
+  }
+}
+
+context OfferRule {
+
+  @critique
+  constraint OnlyOneInitialRule {
+    guard : self.isInitial()
+    check : OfferRule.all.select(r | r.isInitial()).size = 1
+    message : "There must be exactly one initial rule."
+  }
+}
+
+context OfferRule {
+
+  @warning
+  constraint AlwaysExclusive {
+    guard : not self.triggersAlways.isUndefined()
+    check : self.triggersIfMatch.isUndefined() and
+            self.triggersIfNotMatch.isUndefined()
+    message : "If a rule uses 'always', it cannot also use 'ifMatch' or 'ifNotMatch'."
+  }
+  
+  @warning
+  constraint IfsExclusive {
+    guard : self.triggersAlways.isUndefined()
+    check : not self.triggersIfMatch.isUndefined() or
+            not self.triggersIfNotMatch.isUndefined()
+    message : "If a rule does not use 'always', it must use 1 or more of 'ifMatch' or 'ifNotMatch'."
+  }
+}
+
+context OfferRule {
+
+  @critique
+  constraint NoCycles {
+    check : not self.hasCycles()
+    message : "Rule '" + self.name + "' participates in a trigger cycle."
+  }
+}
+
+operation OfferRule isInitial() : Boolean {
+  return OfferRule.all.select(o |
+    o.triggersIfMatch == self or
+    o.triggersIfNotMatch == self or
+    o.triggersAlways == self
+  ).isEmpty();
+}
+
+operation OfferRule hasCycles() : Boolean {
+  var all = Sequence{};
+  var queue = Sequence{};
+  
+  queue.add(self);
+  
+  while (queue.size() > 0) {
+  	var current = queue.at(0);
+  	queue.removeAt(0);
+  	
+  	if (all.contains(current)) {
+  		return true;
+  	}
+  	
+  	all.add(current);
+  
+    if (not current.triggersIfMatch.isUndefined()) { queue.add(current.triggersIfMatch); }
+    if (not current.triggersIfNotMatch.isUndefined()) { queue.add(current.triggersIfNotMatch); }
+    if (not current.triggersAlways.isUndefined()) { queue.add(current.triggersAlways); }
+  }
+
+  return false;
+}
