@@ -21,19 +21,20 @@ public class ReplaceTargetCostAction implements OfferRuleAction {
 
     @Override
     public void apply(OfferContext ctx) {
+        System.out.println("Applying replace cost: " + cost + " with max count: " + maxCount);
+
         int countRemaining = maxCount;
-
         List<OfferContext.ProductOrder> targets = target.resolve(ctx);
-        for (OfferContext.ProductOrder order : ctx.productOrders) {
-            if (targets.contains(order)) {
-                BigDecimal unitCost = BigDecimal.valueOf(cost);
-                BigDecimal difference = unitCost.subtract(order.currentPrice);
-                order.currentPrice = unitCost;
-                ctx.totalPrice = ctx.totalPrice.subtract(difference);
+        for (OfferContext.ProductOrder order : targets) {
+            System.out.println("Applying replace cost to product order: " + order);
 
-                countRemaining--;
-                if (countRemaining <= 0) break;
-            }
+            BigDecimal unitCost = BigDecimal.valueOf(cost);
+            BigDecimal difference = unitCost.subtract(order.currentPrice);
+            order.currentPrice = unitCost;
+            ctx.totalPrice = ctx.totalPrice.subtract(difference);
+
+            countRemaining--;
+            if (countRemaining <= 0) break;
         }
     }
 }

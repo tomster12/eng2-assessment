@@ -16,10 +16,14 @@ import java.util.List;
 public class OfferDefinitions {
 
 	public static OfferRule initializeOfferGraph() {
+		OfferRule initialRule = null;
+
 		OfferRule ruleBakewellSpecial = new OfferRule("Bakewell Special");
 		ruleBakewellSpecial.addCondition(new ContainsTargetCondition(new ProductOfferTarget("' + Bakewell Tart + '"), 1));
 		ruleBakewellSpecial.addCondition(new MaxDailyProductOrdersCondition("Bakewell Tart", 10L));
 		ruleBakewellSpecial.addAction(new TargetPercentDiscountAction(new ProductOfferTarget("' + Bakewell Tart + '"), 10.0));
+
+		initialRule = ruleBakewellSpecial;
 
 		OfferRule ruleLargePizzaIcecream = new OfferRule("Large Pizza + Icecream");
 		ruleLargePizzaIcecream.addCondition(new ContainsTargetCondition(new ProductWithTagOfferTarget(List.of("Large", "Pizza")), 2));
@@ -46,6 +50,6 @@ public class OfferDefinitions {
 		rule241Pizza.setTriggersAlways(ruleChristmasDiscount);
 		ruleChristmasDiscount.setTriggersIfNotMatch(ruleChocolateDeal);
 
-		return null;
+		return initialRule;
 	}
 }

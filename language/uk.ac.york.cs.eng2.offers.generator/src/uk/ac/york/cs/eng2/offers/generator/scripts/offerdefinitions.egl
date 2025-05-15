@@ -17,6 +17,8 @@ import java.util.List;
 public class OfferDefinitions {
 
     public static OfferRule initializeOfferGraph() {
+    	OfferRule initialRule = null;
+    
         [% for (offer in catalogue.rules) {%]
 	        OfferRule [%=offer.getJavaName()%] = new OfferRule("[%=offer.name%]");
 	        [% for (cond in offer.conditions) { %]
@@ -41,7 +43,11 @@ public class OfferDefinitions {
 	                [%=offer.getJavaName()%].addAction(new ReplaceTargetCostAction([%= act.getTarget() -%], [%=act.maxCount%], [%=act.cost%]));
 	            [% } %]
 	        [% } %]
-	        
+
+			[% if (offer.isInitial()) { %]
+			initialRule = [%=offer.getJavaName()%];
+			
+			[% } %]
         [% } %]
         
         [% for (offer in catalogue.rules) { %]
@@ -56,25 +62,34 @@ public class OfferDefinitions {
 	        [% } %]
 	    [% } %]
 
-        return null;
+        return initialRule;
     }
 }
 
 
-[% operation Condition getTarget() { %]
+[% operation Condition getTarget() : String { %]
 [% if (self.target.isTypeOf(ProductTarget)) { %]
 new ProductOfferTarget("' + [%= self.target.product.name %] + '")[% } else if (self.target.isTypeOf(ProductWithTagTarget)) { %]
 new ProductWithTagOfferTarget(List.of([%= self.target.tags.collect(tag | '"' + tag.name + '"').concat(", ") %]))[% } else { %]
 "null" /* Unknown target type */[% } %]
 [% } %]
 
-[% operation OfferRule getJavaName() {
+[% operation OfferRule getJavaName() : String {
 	return "rule" + self.name.replaceAll("[^a-zA-Z0-9]", "").ftuc();
 } %]
 
-[% operation Action getTarget() { %]
+[% operation Action getTarget() : String { %]
 [% if (self.target.isTypeOf(ProductTarget)) { %]
 new ProductOfferTarget("' + [%= self.target.product.name %] + '")[% } else if (self.target.isTypeOf(ProductWithTagTarget)) { %]
 new ProductWithTagOfferTarget(List.of([%= self.target.tags.collect(tag | '"' + tag.name + '"').concat(", ") %]))[% } else { %]
 "null" /* Unknown target type */[% } %]
 [% } %]
+
+
+[% operation OfferRule isInitial() : Boolean {
+  return OfferRule.all.select(o |
+    o.triggersIfMatch == self or
+    o.triggersIfNotMatch == self or
+    o.triggersAlways == self
+  ).isEmpty();
+} %]

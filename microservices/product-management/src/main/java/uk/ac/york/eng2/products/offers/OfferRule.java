@@ -37,12 +37,16 @@ public class OfferRule {
     }
 
     public void apply(OfferContext ctx) {
+        System.out.println("Applying rule " + name);
+
         boolean allMatch = true;
         for (OfferRuleCondition condition : conditions) {
             allMatch &= condition.matches(ctx);
         }
 
-        if (allMatch || triggersAlways != null) {
+        System.out.println("Conditions matched " + allMatch);
+
+        if (allMatch) {
             for (OfferRuleAction action : actions) {
                 action.apply(ctx);
             }

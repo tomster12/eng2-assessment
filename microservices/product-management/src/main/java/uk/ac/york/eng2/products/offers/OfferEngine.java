@@ -10,7 +10,7 @@ import java.util.List;
 @Singleton
 public class OfferEngine {
 
-    private OfferRule initialRule;
+    private final OfferRule initialRule;
 
     public OfferEngine() {
         this.initialRule = OfferDefinitions.initializeOfferGraph();
