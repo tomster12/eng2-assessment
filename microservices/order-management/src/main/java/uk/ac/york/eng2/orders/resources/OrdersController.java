@@ -66,14 +66,11 @@ public class OrdersController {
         order.setCustomer(customer);
         order.setDateCreated(LocalDate.now());
         order.setAddress(orderCreateDTO.getAddress());
+
         priceAndPopulateOrderItems(orderCreateDTO.getProductQuantities(), order);
+
         order = ordersRepo.save(order);
-
-        Long inCustomerId = customer.getId();
-        Long outCustomerId = order.getCustomer().getId();
-
         productOrderProducer.produceProductOrderEvents(order);
-
         return HttpResponse.created(order);
     }
 
@@ -101,6 +98,7 @@ public class OrdersController {
     private void priceAndPopulateOrderItems(Map<String, Long> productQuantities, Order order) {
         OrderPriceRequestDTO orderRequestDTO = new OrderPriceRequestDTO();
         orderRequestDTO.setProductQuantities(productQuantities);
+
         HttpResponse<OrderPriceResponseDTO> priceOrderResponse = productsApi.priceOrder(orderRequestDTO);
         if (priceOrderResponse.getStatus() != HttpStatus.OK) {
             throw new HttpStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Pricing service could not price order");

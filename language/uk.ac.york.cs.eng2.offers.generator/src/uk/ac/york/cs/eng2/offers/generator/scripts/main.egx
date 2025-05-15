@@ -1,11 +1,5 @@
-rule OfferRule2Java
-  transform r : OfferRule {
-    template : "offerrule.egl"
-    
-    parameters : Map{
-    	"ruleName" = r.name.replaceAll("[^a-zA-Z0-9]", "")
-    }
-    
-    target : "src/offers/" + r.name.replaceAll("[^a-zA-Z0-9]", "") + ".java"
+rule Catalogue2Java
+  transform catalogue : Catalogue {
+    template : "offerdefinitions.egl"
+    target : "OfferDefinitions.java"
   }
-

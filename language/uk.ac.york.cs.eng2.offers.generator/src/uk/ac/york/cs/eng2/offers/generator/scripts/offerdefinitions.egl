@@ -1,0 +1,80 @@
+package uk.ac.york.eng2.products.offers;
+
+import uk.ac.york.eng2.products.offers.impl.condition.ContainsTargetCondition;
+import uk.ac.york.eng2.products.offers.impl.condition.MaxDailyProductOrdersCondition;
+import uk.ac.york.eng2.products.offers.impl.condition.MinimumTotalOrderCondition;
+import uk.ac.york.eng2.products.offers.impl.condition.RecurringYearlyDateCondition;
+import uk.ac.york.eng2.products.offers.impl.action.ReplaceTargetCostAction;
+import uk.ac.york.eng2.products.offers.impl.action.TargetPercentDiscountAction;
+import uk.ac.york.eng2.products.offers.impl.action.TotalAbsoluteDiscountAction;
+import uk.ac.york.eng2.products.offers.impl.action.TotalPercentDiscountAction;
+import uk.ac.york.eng2.products.offers.impl.target.ProductOfferTarget;
+import uk.ac.york.eng2.products.offers.impl.target.ProductWithTagOfferTarget;
+
+import java.util.List;
+
+
+public class OfferDefinitions {
+
+    public static OfferRule initializeOfferGraph() {
+        [% for (offer in catalogue.rules) {%]
+	        OfferRule [%=offer.getJavaName()%] = new OfferRule("[%=offer.name%]");
+	        [% for (cond in offer.conditions) { %]
+	            [% if (cond.isTypeOf(ContainsTargetCondition)) { -%]
+	                [%=offer.getJavaName()%].addCondition(new ContainsTargetCondition([%= cond.getTarget() -%], [%= cond.minCount %]));
+	            [% } else if (cond.isTypeOf(MaxDailyProductOrdersCondition)) { %]
+	                [%=offer.getJavaName()%].addCondition(new MaxDailyProductOrdersCondition("[%= cond.product.name %]", [%= cond.maxCount %]L));
+	            [% } else if (cond.isTypeOf(MinimumTotalOrderCondition)) { %]
+	                [%=offer.getJavaName()%].addCondition(new MinimumTotalOrderCondition([%= cond.total %]));
+	            [% } else if (cond.isTypeOf(RecurringYearlyDateCondition)) { %]
+	                [%=offer.getJavaName()%].addCondition(new RecurringYearlyDateCondition([%= cond.month %], [%= cond.day %]));
+	            [% } %]
+	        [% } %]
+	        [% for (act in offer.actions) { %]
+	            [% if (act.isTypeOf(TotalPercentDiscountAction)) { %]
+	                [%=offer.getJavaName()%].addAction(new TotalPercentDiscountAction([%=act.percentage%]));
+	            [% } else if (act.isTypeOf(TotalAbsoluteDiscountAction)) { %]
+	                [%=offer.getJavaName()%].addAction(new TotalAbsoluteDiscountAction([%=act.amount%]));
+	            [% } else if (act.isTypeOf(TargetPercentDiscountAction)) { %]
+	                [%=offer.getJavaName()%].addAction(new TargetPercentDiscountAction([%= act.getTarget() -%], [%=act.percentage%]));
+	            [% } else if (act.isTypeOf(ReplaceTargetCostAction)) { %]
+	                [%=offer.getJavaName()%].addAction(new ReplaceTargetCostAction([%= act.getTarget() -%], [%=act.maxCount%], [%=act.cost%]));
+	            [% } %]
+	        [% } %]
+	        
+        [% } %]
+        
+        [% for (offer in catalogue.rules) { %]
+	        [% if (not offer.triggersAlways.isUndefined()) { %]
+	        	[%= offer.getJavaName() %].setTriggersAlways([%= offer.triggersAlways.getJavaName() %]);
+	        [% } %]
+	        [% if (not offer.triggersIfMatch.isUndefined()) { %]
+	        	[%= offer.getJavaName() %].setTriggersIfMatch([%= offer.triggersIfMatch.getJavaName() %]);
+	        [% } %]
+	        [% if (not offer.triggersIfNotMatch.isUndefined()) { %]
+	        	[%= offer.getJavaName() %].setTriggersIfNotMatch([%= offer.triggersIfNotMatch.getJavaName() %]);
+	        [% } %]
+	    [% } %]
+
+        return null;
+    }
+}
+
+
+[% operation Condition getTarget() { %]
+[% if (self.target.isTypeOf(ProductTarget)) { %]
+new ProductOfferTarget("' + [%= self.target.product.name %] + '")[% } else if (self.target.isTypeOf(ProductWithTagTarget)) { %]
+new ProductWithTagOfferTarget(List.of([%= self.target.tags.collect(tag | '"' + tag.name + '"').concat(", ") %]))[% } else { %]
+"null" /* Unknown target type */[% } %]
+[% } %]
+
+[% operation OfferRule getJavaName() {
+	return "rule" + self.name.replaceAll("[^a-zA-Z0-9]", "").ftuc();
+} %]
+
+[% operation Action getTarget() { %]
+[% if (self.target.isTypeOf(ProductTarget)) { %]
+new ProductOfferTarget("' + [%= self.target.product.name %] + '")[% } else if (self.target.isTypeOf(ProductWithTagTarget)) { %]
+new ProductWithTagOfferTarget(List.of([%= self.target.tags.collect(tag | '"' + tag.name + '"').concat(", ") %]))[% } else { %]
+"null" /* Unknown target type */[% } %]
+[% } %]

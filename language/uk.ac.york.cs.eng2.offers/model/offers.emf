@@ -40,10 +40,6 @@ class ProductTarget extends Target {
 	ref Product product;
 }
 
-class ProductInCategoryTarget extends Target {
-	ref Category category;
-}
-
 class ProductWithTagTarget extends Target {
 	ref Tag[*] tags;
 }

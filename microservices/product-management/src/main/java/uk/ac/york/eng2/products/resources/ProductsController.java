@@ -4,16 +4,21 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.*;
 import jakarta.inject.Inject;
+import jakarta.persistence.Tuple;
 import jakarta.transaction.Transactional;
+import org.flywaydb.core.internal.util.Pair;
 import uk.ac.york.eng2.products.domain.OrdersByDay;
 import uk.ac.york.eng2.products.domain.Product;
 import uk.ac.york.eng2.products.domain.Tag;
 import uk.ac.york.eng2.products.dto.*;
+import uk.ac.york.eng2.products.offers.OfferContext;
+import uk.ac.york.eng2.products.offers.OfferEngine;
 import uk.ac.york.eng2.products.repository.OrdersByDayRepository;
 import uk.ac.york.eng2.products.repository.ProductsRepository;
 import uk.ac.york.eng2.products.repository.TagsRepository;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.*;
 
 @io.swagger.v3.oas.annotations.tags.Tag(name = "Products")
@@ -29,6 +34,9 @@ public class ProductsController {
 
     @Inject
     private TagsRepository tagsRepo;
+
+    @Inject
+    private OfferEngine offerEngine;
 
     @Get
     public List<Product> getProducts() {
@@ -99,33 +107,32 @@ public class ProductsController {
     @Transactional
     @Put("/order")
     public HttpResponse<OrderPriceResponseDTO> priceOrder(@Body OrderPriceRequestDTO priceRequestDTO) {
+        OfferContext ctx = new OfferContext(this);
         Map<String, Long> productQuantities = priceRequestDTO.getProductQuantities();
 
-        // TODO: Apply offers to the response DTO
-
-        OrderPriceResponseDTO priceResponseDTO = new OrderPriceResponseDTO();
-        List<ProductPriceDTO> productPrices = new ArrayList<>();
-        BigDecimal totalPrice = BigDecimal.ZERO;
-
+        // Put the price request product names into an offer context
         for (String productName : productQuantities.keySet()) {
             Optional<Product> optProduct = productRepo.findByName(productName);
             if (optProduct.isEmpty()) return HttpResponse.notFound();
             Product product = optProduct.get();
+            ctx.productOrders.add(new OfferContext.ProductOrder(product, productQuantities.get(productName)));
+        }
 
+        offerEngine.applyOffers(ctx);
+
+        // Collate an ordered list of product unit prices from the ctx
+        List<ProductPriceDTO> productPrices = new ArrayList<>();
+        for (OfferContext.ProductOrder order : ctx.productOrders) {
             ProductPriceDTO productPriceDTO = new ProductPriceDTO();
-            productPriceDTO.setProductId(product.getId());
-            productPriceDTO.setProductName(product.getName());
-            productPriceDTO.setUnitPrice(product.getUnitPrice());
-
-            Long quantity = productQuantities.get(productName);
-            BigDecimal linePrice = product.getUnitPrice().multiply(BigDecimal.valueOf(quantity));
-            totalPrice = totalPrice.add(linePrice);
+            productPriceDTO.setUnitPrice(order.product.getUnitPrice());
+            productPriceDTO.setProductName(order.product.getName());
             productPrices.add(productPriceDTO);
         }
 
+        // Respond with final unit and total prices from the ctx
+        OrderPriceResponseDTO priceResponseDTO = new OrderPriceResponseDTO();
         priceResponseDTO.setProductPrices(productPrices);
-        priceResponseDTO.setTotalPrice(totalPrice);
-
+        priceResponseDTO.setTotalPrice(ctx.totalPrice);
         return HttpResponse.ok(priceResponseDTO);
     }
 
@@ -145,5 +152,17 @@ public class ProductsController {
         }
 
         return tags;
+    }
+
+    public Long getTodaysOrderCount(String productName) {
+        Optional<Product> optProduct = productRepo.findByName(productName);
+        if (optProduct.isEmpty()) return 0L;
+        Product product = optProduct.get();
+
+        Optional<OrdersByDay> todayOrdersOpt = ordersByDayRepo.findByProductAndDay(product, LocalDate.now());
+        if (todayOrdersOpt.isEmpty()) return 0L;
+        OrdersByDay todayOrders = todayOrdersOpt.get();
+
+        return todayOrders.getCount();
     }
 }
