@@ -77,6 +77,8 @@ public class OrderWorkflowTest {
         HttpResponse<Order> orderUpdateResponse = ordersApi.updateOrder(order.getId(), orderUpdateDTO);
         assertEquals(HttpStatus.OK, orderUpdateResponse.status());
 
+        System.out.println("Checking daily order for '" + bananaProduct.getName() + "' with ID '" + bananaProduct.getId() + "'");
+
         // Check the daily orders for bananas
         OrdersByDayRequestDTO ordersByDayRequestDTO = new OrdersByDayRequestDTO();
         ordersByDayRequestDTO.setDay(order.getDateCreated());
