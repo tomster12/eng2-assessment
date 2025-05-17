@@ -11,6 +11,7 @@ public class MinimumTotalOrderCondition implements OfferRuleCondition {
     }
 
     public boolean matches(OfferContext ctx) {
+        System.out.println("MinimumTotalOrderCondition checking " + ctx.totalPrice.doubleValue() + " >= " + total);
         return ctx.totalPrice.doubleValue() >= total;
     }
 }

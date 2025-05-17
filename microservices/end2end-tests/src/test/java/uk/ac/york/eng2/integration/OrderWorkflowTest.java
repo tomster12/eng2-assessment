@@ -36,19 +36,11 @@ public class OrderWorkflowTest {
     @Test
     public void placeOrderForCustomerForProductSuccess() {
         // Create the products
-        ProductCreateDTO productCreateDTO = new ProductCreateDTO();
-        productCreateDTO.setName("banana");
-        productCreateDTO.setTags(List.of("fruit", "yellow"));
-        productCreateDTO.setUnitPrice(new BigDecimal("0.75"));
-        HttpResponse<Product> productCreateResponse = productsApi.createProduct(productCreateDTO);
-        assertEquals(HttpStatus.CREATED, productCreateResponse.status());
-        Product bananaProduct = productCreateResponse.body();
-
-        productCreateDTO.setName("orange");
-        productCreateDTO.setTags(List.of("fruit"));
-        productCreateDTO.setUnitPrice(new BigDecimal("0.5"));
-        productCreateResponse = productsApi.createProduct(productCreateDTO);
-        assertEquals(HttpStatus.CREATED, productCreateResponse.status());
+        Product bananaProduct = addProduct("Banana", List.of("Fruit", "Yellow"), 0.75);
+        addProduct("Pizza", List.of("Pizza"), 12.50);
+        addProduct("Bakewell Tart", List.of("Sweet"), 1.50);
+        addProduct("Large Pizza", List.of("Large", "Pizza"), 15.00);
+        addProduct("Large Ice Cream", List.of("Large", "Ice Cream"), 5.50);
 
         // Create a customer
         CustomerCreateDTO customerCreateDTO = new CustomerCreateDTO();
@@ -64,12 +56,18 @@ public class OrderWorkflowTest {
         orderCreateDTO.setCustomerId(customer.getId());
         orderCreateDTO.setAddress("Bobs House");
         Map<String, Long> productQuantities = new HashMap<>();
-        productQuantities.put("banana", 10L);
-        productQuantities.put("orange", 7L);
+
+        productQuantities.put("Banana", 3L);
+        productQuantities.put("Bakewell Tart", 3L);
+        productQuantities.put("Large Pizza", 2L);
+        productQuantities.put("Large Ice Cream", 3L);
+
         orderCreateDTO.setProductQuantities(productQuantities);
         HttpResponse<Order> orderCreateResponse = ordersApi.createOrder(orderCreateDTO);
         assertEquals(HttpStatus.CREATED, orderCreateResponse.status());
         Order order = orderCreateResponse.body();
+
+        System.out.println("E2E Order placed, total price: " + order.getTotalAmount());
 
         // Update the order to say it is finished
         OrderUpdateDTO orderUpdateDTO = new OrderUpdateDTO();
@@ -84,6 +82,17 @@ public class OrderWorkflowTest {
         HttpResponse<OrdersByDay> ordersByDayResponse = productsApi.getProductDailyOrders(bananaProduct.getId(), ordersByDayRequestDTO);
         assertEquals(HttpStatus.OK, ordersByDayResponse.status());
         OrdersByDay ordersByDay = ordersByDayResponse.body();
-        assertEquals(10L, ordersByDay.getCount());
+        assertEquals(1L, ordersByDay.getCount());
+    }
+
+    private Product addProduct(String name, List<String> tags, double price) {
+        ProductCreateDTO productCreateDTO = new ProductCreateDTO();
+        productCreateDTO.setName(name);
+        productCreateDTO.setTags(tags);
+        productCreateDTO.setUnitPrice(new BigDecimal(price));
+
+        HttpResponse<Product> productCreateResponse = productsApi.createProduct(productCreateDTO);
+        assertEquals(HttpStatus.CREATED, productCreateResponse.status());
+        return productCreateResponse.body();
     }
 }

@@ -106,25 +106,22 @@ public class OrdersController {
         OrderPriceResponseDTO orderResponseDTO = priceOrderResponse.body();
 
         List<OrderItem> orderItems = new ArrayList<>();
-        BigDecimal totalAmount = BigDecimal.ZERO;
 
         for (ProductPriceDTO productPrice : orderResponseDTO.getProductPrices()) {
             Long quantity = productQuantities.get(productPrice.getProductName());
             if (quantity == null) {
                 throw new HttpStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Pricing service returned invalid product");
             }
-
             OrderItem item = new OrderItem();
             item.setProductId(productPrice.getProductId());
             item.setUnitPrice(productPrice.getUnitPrice());
             item.setQuantity(quantity);
             item.setOrder(order);
-
-            totalAmount = totalAmount.add(productPrice.getUnitPrice().multiply(BigDecimal.valueOf(quantity)));
+            System.out.println("Adding item " + productPrice.getProductName() + ", ID: " + item.getProductId());
             orderItems.add(item);
         }
 
         order.setOrderItems(orderItems);
-        order.setTotalAmount(totalAmount);
+        order.setTotalAmount(orderResponseDTO.getTotalPrice());
     }
 }

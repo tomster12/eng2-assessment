@@ -14,8 +14,7 @@ public class TotalPercentDiscountAction implements OfferRuleAction {
 
     @Override
     public void apply(OfferContext ctx) {
-        System.out.println("Applying total absolute discount: " + percentage);
-
+        System.out.println("TotalPercentDiscountAction Applying total absolute discount: " + percentage);
         BigDecimal discount = ctx.totalPrice.multiply(BigDecimal.valueOf(percentage / 100.0));
         ctx.totalPrice = ctx.totalPrice.subtract(discount);
     }

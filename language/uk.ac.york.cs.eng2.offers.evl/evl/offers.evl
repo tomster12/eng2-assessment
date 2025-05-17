@@ -36,20 +36,12 @@ context OfferRule {
 
 context OfferRule {
 
-  @warning
+  @critique
   constraint AlwaysExclusive {
     guard : not self.triggersAlways.isUndefined()
     check : self.triggersIfMatch.isUndefined() and
             self.triggersIfNotMatch.isUndefined()
-    message : "If a rule uses 'always', it cannot also use 'ifMatch' or 'ifNotMatch'."
-  }
-  
-  @warning
-  constraint IfsExclusive {
-    guard : self.triggersAlways.isUndefined()
-    check : not self.triggersIfMatch.isUndefined() or
-            not self.triggersIfNotMatch.isUndefined()
-    message : "If a rule does not use 'always', it must use 1 or more of 'ifMatch' or 'ifNotMatch'."
+    message : "Rule '" + self.name + "' uses 'always' so it cannot use 'ifMatch' or 'ifNotMatch'."
   }
 }
 
@@ -57,7 +49,7 @@ context OfferRule {
 
   @critique
   constraint NoCycles {
-    check : not self.hasCycles()
+    check : not self.hasCycles(Sequence{})
     message : "Rule '" + self.name + "' participates in a trigger cycle."
   }
 }
@@ -70,26 +62,27 @@ operation OfferRule isInitial() : Boolean {
   ).isEmpty();
 }
 
-operation OfferRule hasCycles() : Boolean {
-  var all = Sequence{};
-  var queue = Sequence{};
-  
-  queue.add(self);
-  
-  while (queue.size() > 0) {
-  	var current = queue.at(0);
-  	queue.removeAt(0);
-  	
-  	if (all.contains(current)) {
-  		return true;
-  	}
-  	
-  	all.add(current);
-  
-    if (not current.triggersIfMatch.isUndefined()) { queue.add(current.triggersIfMatch); }
-    if (not current.triggersIfNotMatch.isUndefined()) { queue.add(current.triggersIfNotMatch); }
-    if (not current.triggersAlways.isUndefined()) { queue.add(current.triggersAlways); }
+operation OfferRule hasCycles(visited : Sequence) : Boolean {
+  if (visited.contains(self)) {
+    return true;
   }
 
+  visited.add(self);
+
+  for (child in self.getChildren()) {
+  	if (child.hasCycles(visited.clone())) {
+  		return true;
+  	}
+  }
+  
   return false;
 }
+
+operation OfferRule getChildren() : Sequence<OfferRule> {
+  var children = Sequence{};
+  if (not self.triggersIfMatch.isUndefined()) { children.add(self.triggersIfMatch); }
+  if (not self.triggersIfNotMatch.isUndefined()) { children.add(self.triggersIfNotMatch); }
+  if (not self.triggersAlways.isUndefined()) { children.add(self.triggersAlways); }
+  return children;
+}
+

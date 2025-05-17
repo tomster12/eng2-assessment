@@ -17,6 +17,7 @@ public class RecurringYearlyDateCondition implements OfferRuleCondition {
     @Override
     public boolean matches(OfferContext ctx) {
         LocalDate today = LocalDate.now();
+        System.out.println("RecurringYearlyDateCondition checking " + today.toString() + " == " + month + ", " + day);
         return today.getMonthValue() == month && today.getDayOfMonth() == day;
     }
 }

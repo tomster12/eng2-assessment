@@ -11,12 +11,10 @@ import java.util.List;
 public class OfferContext {
     public static class ProductOrder {
         public Product product;
-        public Long quantity;
         public BigDecimal currentPrice;
 
-        public ProductOrder(Product product, Long quantity) {
+        public ProductOrder(Product product) {
             this.product = product;
-            this.quantity = quantity;
             currentPrice = this.product.getUnitPrice();
         }
     }

@@ -3,3 +3,5 @@ rule Catalogue2Java
     template : "offerdefinitions.egl"
     target : "OfferDefinitions.java"
   }
+
+ 

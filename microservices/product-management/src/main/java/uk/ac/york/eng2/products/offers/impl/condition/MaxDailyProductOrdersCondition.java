@@ -15,6 +15,7 @@ public class MaxDailyProductOrdersCondition implements OfferRuleCondition {
     @Override
     public boolean matches(OfferContext ctx) {
         Long actualCount = ctx.getTodaysOrderCount(productName);
+        System.out.println("MaxDailyProductOrdersCondition product '" + productName + "' checking " + actualCount + " <= " + maxCount);
         return actualCount <= maxCount;
     }
 }

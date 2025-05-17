@@ -20,12 +20,15 @@ public class OfferEngine {
         ctx.totalPrice = BigDecimal.ZERO;
 
         for (OfferContext.ProductOrder order : ctx.productOrders) {
-            BigDecimal quantity = BigDecimal.valueOf(order.quantity);
-            ctx.totalPrice = ctx.totalPrice.add(order.currentPrice.multiply(quantity));
+            ctx.totalPrice = ctx.totalPrice.add(order.currentPrice);
         }
+
+        System.out.println("Price before: " + ctx.totalPrice);
 
         if (initialRule != null) {
             initialRule.apply(ctx);
         }
+
+        System.out.println("Price after: " + ctx.totalPrice);
     }
 }

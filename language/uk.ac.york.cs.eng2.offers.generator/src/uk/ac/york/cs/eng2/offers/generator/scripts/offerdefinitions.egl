@@ -13,6 +13,11 @@ import uk.ac.york.eng2.products.offers.impl.target.ProductWithTagOfferTarget;
 
 import java.util.List;
 
+[% out.setContentType("Java"); %]
+
+[%=out.startPreserve("user-imports", true)%]
+// User-defined imports
+[%=out.stopPreserve()%]
 
 public class OfferDefinitions {
 
@@ -61,15 +66,19 @@ public class OfferDefinitions {
 	        	[%= offer.getJavaName() %].setTriggersIfNotMatch([%= offer.triggersIfNotMatch.getJavaName() %]);
 	        [% } %]
 	    [% } %]
+	    
+	    
+		[%=out.startPreserve("user-offer-rules", true)%]
+		// User-defined offer rules
+		[%=out.stopPreserve()%]
 
         return initialRule;
     }
 }
 
-
 [% operation Condition getTarget() : String { %]
 [% if (self.target.isTypeOf(ProductTarget)) { %]
-new ProductOfferTarget("' + [%= self.target.product.name %] + '")[% } else if (self.target.isTypeOf(ProductWithTagTarget)) { %]
+new ProductOfferTarget("[%= self.target.product.name %]")[% } else if (self.target.isTypeOf(ProductWithTagTarget)) { %]
 new ProductWithTagOfferTarget(List.of([%= self.target.tags.collect(tag | '"' + tag.name + '"').concat(", ") %]))[% } else { %]
 "null" /* Unknown target type */[% } %]
 [% } %]
@@ -80,11 +89,10 @@ new ProductWithTagOfferTarget(List.of([%= self.target.tags.collect(tag | '"' + t
 
 [% operation Action getTarget() : String { %]
 [% if (self.target.isTypeOf(ProductTarget)) { %]
-new ProductOfferTarget("' + [%= self.target.product.name %] + '")[% } else if (self.target.isTypeOf(ProductWithTagTarget)) { %]
+new ProductOfferTarget("[%= self.target.product.name %]")[% } else if (self.target.isTypeOf(ProductWithTagTarget)) { %]
 new ProductWithTagOfferTarget(List.of([%= self.target.tags.collect(tag | '"' + tag.name + '"').concat(", ") %]))[% } else { %]
 "null" /* Unknown target type */[% } %]
 [% } %]
-
 
 [% operation OfferRule isInitial() : Boolean {
   return OfferRule.all.select(o |

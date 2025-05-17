@@ -17,6 +17,7 @@ public class ContainsTargetCondition implements OfferRuleCondition {
 
     public boolean matches(OfferContext ctx) {
         List<OfferContext.ProductOrder> targets = target.resolve(ctx);
+        System.out.println("ContainsTargetCondition '" + this.target.toString() + "' checking " + targets.size() + " >= " + minCount);
         return targets.size() >= minCount;
     }
 }

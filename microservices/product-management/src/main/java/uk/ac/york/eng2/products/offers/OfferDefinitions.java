@@ -13,15 +13,20 @@ import uk.ac.york.eng2.products.offers.impl.target.ProductWithTagOfferTarget;
 
 import java.util.List;
 
+// protected region user-imports on begin
+import uk.ac.york.eng2.products.offers.userimpl.DoubleBananaCostAction;
+import uk.ac.york.eng2.products.offers.userimpl.OrderedThreeBananasCondition;
+// protected region user-imports end
+
 public class OfferDefinitions {
 
 	public static OfferRule initializeOfferGraph() {
 		OfferRule initialRule = null;
 
 		OfferRule ruleBakewellSpecial = new OfferRule("Bakewell Special");
-		ruleBakewellSpecial.addCondition(new ContainsTargetCondition(new ProductOfferTarget("' + Bakewell Tart + '"), 1));
+		ruleBakewellSpecial.addCondition(new ContainsTargetCondition(new ProductOfferTarget("Bakewell Tart"), 1));
 		ruleBakewellSpecial.addCondition(new MaxDailyProductOrdersCondition("Bakewell Tart", 10L));
-		ruleBakewellSpecial.addAction(new TargetPercentDiscountAction(new ProductOfferTarget("' + Bakewell Tart + '"), 10.0));
+		ruleBakewellSpecial.addAction(new TargetPercentDiscountAction(new ProductOfferTarget("Bakewell Tart"), 10.0));
 
 		initialRule = ruleBakewellSpecial;
 
@@ -49,6 +54,13 @@ public class OfferDefinitions {
 		ruleLargePizzaIcecream.setTriggersIfNotMatch(rule241Pizza);
 		rule241Pizza.setTriggersAlways(ruleChristmasDiscount);
 		ruleChristmasDiscount.setTriggersIfNotMatch(ruleChocolateDeal);
+
+		// protected region user-offer-rules on begin
+		OfferRule ruleBadBananas = new OfferRule("Bad Bananas");
+		ruleBadBananas.addCondition(new OrderedThreeBananasCondition());
+		ruleBadBananas.addAction(new DoubleBananaCostAction());
+		ruleChocolateDeal.setTriggersAlways(ruleBadBananas);
+		// protected region user-offer-rules end
 
 		return initialRule;
 	}

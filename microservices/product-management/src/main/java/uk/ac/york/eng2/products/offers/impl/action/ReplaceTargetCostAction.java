@@ -3,7 +3,6 @@ package uk.ac.york.eng2.products.offers.impl.action;
 import uk.ac.york.eng2.products.offers.OfferContext;
 import uk.ac.york.eng2.products.offers.OfferRuleAction;
 import uk.ac.york.eng2.products.offers.OfferTarget;
-import uk.ac.york.eng2.products.offers.impl.condition.MinimumTotalOrderCondition;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -21,21 +20,17 @@ public class ReplaceTargetCostAction implements OfferRuleAction {
 
     @Override
     public void apply(OfferContext ctx) {
-        System.out.println("Applying replace cost: " + cost + " with max count: " + maxCount);
-
+        System.out.println("ReplaceTargetCostAction Applying replace cost: " + cost + " with max count: " + maxCount);
         int countRemaining = maxCount;
         List<OfferContext.ProductOrder> targets = target.resolve(ctx);
         for (OfferContext.ProductOrder order : targets) {
-            System.out.println("Applying replace cost to product order: " + order);
-
-            BigDecimal unitCost = BigDecimal.valueOf(cost);
-            BigDecimal difference = unitCost.subtract(order.currentPrice);
-            order.currentPrice = unitCost;
-            ctx.totalPrice = ctx.totalPrice.subtract(difference);
-
+            BigDecimal targetCost = BigDecimal.valueOf(cost);
+            BigDecimal difference = targetCost.subtract(order.currentPrice);
+            order.currentPrice = targetCost;
+            System.out.println("- Applying replace cost to product order: " + order + ", discount: " + difference);
+            ctx.totalPrice = ctx.totalPrice.add(difference);
             countRemaining--;
             if (countRemaining <= 0) break;
         }
     }
 }
-

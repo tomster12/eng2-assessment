@@ -68,8 +68,6 @@ public class ProductsController {
             return HttpResponse.status(HttpStatus.CONFLICT);
         }
 
-        System.out.println(productCreateDTO.getName());
-
         Product product = new Product();
         product.setName(productCreateDTO.getName());
         product.setUnitPrice(productCreateDTO.getUnitPrice());
@@ -109,23 +107,31 @@ public class ProductsController {
     public HttpResponse<OrderPriceResponseDTO> priceOrder(@Body OrderPriceRequestDTO priceRequestDTO) {
         OfferContext ctx = new OfferContext(this);
         Map<String, Long> productQuantities = priceRequestDTO.getProductQuantities();
+        Map<String, Product> products = new HashMap<String, Product>();
 
         // Put the price request product names into an offer context
         for (String productName : productQuantities.keySet()) {
             Optional<Product> optProduct = productRepo.findByName(productName);
             if (optProduct.isEmpty()) return HttpResponse.notFound();
             Product product = optProduct.get();
-            ctx.productOrders.add(new OfferContext.ProductOrder(product, productQuantities.get(productName)));
+            products.put(productName, product);
+            for (int i = 0; i < productQuantities.get(productName); i++) {
+                ctx.productOrders.add(new OfferContext.ProductOrder(product));
+            }
         }
 
         offerEngine.applyOffers(ctx);
 
+        System.out.println("PM Price after: " + ctx.totalPrice);
+
         // Collate an ordered list of product unit prices from the ctx
         List<ProductPriceDTO> productPrices = new ArrayList<>();
-        for (OfferContext.ProductOrder order : ctx.productOrders) {
+        for (String productName : productQuantities.keySet()) {
             ProductPriceDTO productPriceDTO = new ProductPriceDTO();
-            productPriceDTO.setUnitPrice(order.product.getUnitPrice());
-            productPriceDTO.setProductName(order.product.getName());
+            Product product = products.get(productName);
+            productPriceDTO.setProductId(product.getId());
+            productPriceDTO.setUnitPrice(product.getUnitPrice());
+            productPriceDTO.setProductName(product.getName());
             productPrices.add(productPriceDTO);
         }
 
