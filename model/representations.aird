@@ -9,7 +9,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/uk.ac.york.cs.eng2.offers.viewpoint/description/viewpoint.odesign#//@ownedViewpoints[name='offers.viewpoint']/@ownedRepresentations[name='offers.diagrams.model']"/>
         <target xmi:type="dis:Catalogue" href="example.offers#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_VXbLUDDDEfCbYN27Y5-Bgw" name="Catalogue Diagram" repPath="#_VXakQDDDEfCbYN27Y5-Bgw" changeId="1747302566363">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_VXbLUDDDEfCbYN27Y5-Bgw" name="Catalogue Diagram" repPath="#_VXakQDDDEfCbYN27Y5-Bgw" changeId="1747498467773">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/uk.ac.york.cs.eng2.offers.viewpoint/description/viewpoint.odesign#//@ownedViewpoints[name='offers.viewpoint']/@ownedRepresentations[name='23offers.diagrams.model']"/>
         <target xmi:type="dis:Catalogue" href="example.offers#/"/>
       </ownedRepresentationDescriptors>

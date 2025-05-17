@@ -68,6 +68,7 @@ public class OrderWorkflowTest {
         Order order = orderCreateResponse.body();
 
         System.out.println("E2E Order placed, total price: " + order.getTotalAmount());
+        assertEquals(0, order.getTotalAmount().compareTo(new BigDecimal("27.30")));
 
         // Update the order to say it is finished
         OrderUpdateDTO orderUpdateDTO = new OrderUpdateDTO();
