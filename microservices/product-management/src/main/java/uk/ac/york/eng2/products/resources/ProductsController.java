@@ -4,9 +4,7 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.*;
 import jakarta.inject.Inject;
-import jakarta.persistence.Tuple;
 import jakarta.transaction.Transactional;
-import org.flywaydb.core.internal.util.Pair;
 import uk.ac.york.eng2.products.domain.OrdersByDay;
 import uk.ac.york.eng2.products.domain.Product;
 import uk.ac.york.eng2.products.domain.Tag;
@@ -17,7 +15,6 @@ import uk.ac.york.eng2.products.repository.OrdersByDayRepository;
 import uk.ac.york.eng2.products.repository.ProductsRepository;
 import uk.ac.york.eng2.products.repository.TagsRepository;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -116,13 +113,11 @@ public class ProductsController {
             Product product = optProduct.get();
             products.put(productName, product);
             for (int i = 0; i < productQuantities.get(productName); i++) {
-                ctx.productOrders.add(new OfferContext.ProductOrder(product));
+                ctx.individualProductOrders.add(new OfferContext.IndividualProductOrder(product));
             }
         }
 
         offerEngine.applyOffers(ctx);
-
-        System.out.println("PM Price after: " + ctx.totalPrice);
 
         // Collate an ordered list of product unit prices from the ctx
         List<ProductPriceDTO> productPrices = new ArrayList<>();

@@ -9,7 +9,7 @@ public class OrderedThreeBananasCondition implements OfferRuleCondition {
 
     @Override
     public boolean matches(OfferContext ctx) {
-        Long actualCount = ctx.getTodaysOrderCount("Banana");
+        Long actualCount = ctx.getOrderCountToday("Banana");
         return actualCount == 3;
     }
 }

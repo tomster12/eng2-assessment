@@ -19,8 +19,8 @@ public class TargetPercentDiscountAction implements OfferRuleAction {
     @Override
     public void apply(OfferContext ctx) {
         System.out.println("TargetPercentDiscountAction Applying target percent discount: " + percentage + " for target: " + target);
-        List<OfferContext.ProductOrder> targets = target.resolve(ctx);
-        for (OfferContext.ProductOrder order : targets) {
+        List<OfferContext.IndividualProductOrder> targets = target.resolve(ctx);
+        for (OfferContext.IndividualProductOrder order : targets) {
             BigDecimal discount = order.currentPrice.multiply(BigDecimal.valueOf(percentage / 100.0));
             System.out.println("- Applying replace cost to product order: " + order + ", discount: " + discount);
             order.currentPrice = order.currentPrice.subtract(discount);

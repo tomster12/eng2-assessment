@@ -1,6 +1,5 @@
 package uk.ac.york.eng2.products.offers.impl.target;
 
-import uk.ac.york.eng2.products.domain.Tag;
 import uk.ac.york.eng2.products.offers.OfferContext;
 import uk.ac.york.eng2.products.offers.OfferTarget;
 
@@ -16,10 +15,10 @@ public class ProductWithTagOfferTarget implements OfferTarget {
     }
 
     @Override
-    public List<OfferContext.ProductOrder> resolve(OfferContext context) {
-        List<OfferContext.ProductOrder> result = new ArrayList<>();
+    public List<OfferContext.IndividualProductOrder> resolve(OfferContext context) {
+        List<OfferContext.IndividualProductOrder> result = new ArrayList<>();
 
-        for (OfferContext.ProductOrder order : context.productOrders) {
+        for (OfferContext.IndividualProductOrder order : context.individualProductOrders) {
             boolean hasAll = true;
 
             for (String tagName : tagNames) {

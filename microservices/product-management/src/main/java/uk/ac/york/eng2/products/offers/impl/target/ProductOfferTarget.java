@@ -13,10 +13,10 @@ public class ProductOfferTarget implements OfferTarget {
         this.productName = productName;
     }
 
-    public List<OfferContext.ProductOrder> resolve(OfferContext ctx) {
-        List<OfferContext.ProductOrder> productOrders = new ArrayList<>();
+    public List<OfferContext.IndividualProductOrder> resolve(OfferContext ctx) {
+        List<OfferContext.IndividualProductOrder> productOrders = new ArrayList<>();
 
-        for (OfferContext.ProductOrder productOrder : ctx.productOrders) {
+        for (OfferContext.IndividualProductOrder productOrder : ctx.individualProductOrders) {
             if (productOrder.product.getName().equals(productName)) {
                 productOrders.add(productOrder);
             }

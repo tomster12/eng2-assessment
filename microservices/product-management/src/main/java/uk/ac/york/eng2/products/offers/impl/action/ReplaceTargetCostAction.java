@@ -22,8 +22,8 @@ public class ReplaceTargetCostAction implements OfferRuleAction {
     public void apply(OfferContext ctx) {
         System.out.println("ReplaceTargetCostAction Applying replace cost: " + cost + " with max count: " + maxCount);
         int countRemaining = maxCount;
-        List<OfferContext.ProductOrder> targets = target.resolve(ctx);
-        for (OfferContext.ProductOrder order : targets) {
+        List<OfferContext.IndividualProductOrder> targets = target.resolve(ctx);
+        for (OfferContext.IndividualProductOrder order : targets) {
             BigDecimal targetCost = BigDecimal.valueOf(cost);
             BigDecimal difference = targetCost.subtract(order.currentPrice);
             order.currentPrice = targetCost;

@@ -17,8 +17,8 @@ public class DoubleBananaCostAction implements OfferRuleAction {
 
     @Override
     public void apply(OfferContext ctx) {
-        List<OfferContext.ProductOrder> targets = target.resolve(ctx);
-        for (OfferContext.ProductOrder order : targets) {
+        List<OfferContext.IndividualProductOrder> targets = target.resolve(ctx);
+        for (OfferContext.IndividualProductOrder order : targets) {
             BigDecimal change = order.currentPrice;
             order.currentPrice = order.currentPrice.add(change);
             ctx.totalPrice = ctx.totalPrice.add(change);

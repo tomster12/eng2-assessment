@@ -100,28 +100,25 @@ public class OrdersController {
         orderRequestDTO.setProductQuantities(productQuantities);
 
         HttpResponse<OrderPriceResponseDTO> priceOrderResponse = productsApi.priceOrder(orderRequestDTO);
-        if (priceOrderResponse.getStatus() != HttpStatus.OK) {
-            throw new HttpStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Pricing service could not price order");
-        }
-        OrderPriceResponseDTO orderResponseDTO = priceOrderResponse.body();
+        if (priceOrderResponse.getStatus() != HttpStatus.OK) throw new HttpStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Pricing service could not price order");
+        OrderPriceResponseDTO orderPriceResponseDTO = priceOrderResponse.body();
 
         List<OrderItem> orderItems = new ArrayList<>();
-
-        for (ProductPriceDTO productPrice : orderResponseDTO.getProductPrices()) {
+        for (ProductPriceDTO productPrice : orderPriceResponseDTO.getProductPrices()) {
             Long quantity = productQuantities.get(productPrice.getProductName());
-            if (quantity == null) {
-                throw new HttpStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Pricing service returned invalid product");
-            }
+            if (quantity == null) throw new HttpStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Pricing service returned invalid product");
+
             OrderItem item = new OrderItem();
             item.setProductId(productPrice.getProductId());
             item.setUnitPrice(productPrice.getUnitPrice());
             item.setQuantity(quantity);
             item.setOrder(order);
+
             System.out.println("Adding item " + productPrice.getProductName() + ", ID: " + item.getProductId());
             orderItems.add(item);
         }
 
         order.setOrderItems(orderItems);
-        order.setTotalAmount(orderResponseDTO.getTotalPrice());
+        order.setTotalAmount(orderPriceResponseDTO.getTotalPrice());
     }
 }

@@ -1,6 +1,5 @@
 package uk.ac.york.eng2.products.offers;
 
-import org.flywaydb.core.internal.util.Pair;
 import uk.ac.york.eng2.products.domain.Product;
 import uk.ac.york.eng2.products.resources.ProductsController;
 
@@ -9,27 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OfferContext {
-    public static class ProductOrder {
+    public static class IndividualProductOrder {
         public Product product;
         public BigDecimal currentPrice;
 
-        public ProductOrder(Product product) {
+        public IndividualProductOrder(Product product) {
             this.product = product;
             currentPrice = this.product.getUnitPrice();
         }
     }
 
-    private ProductsController controller;
-    public List<ProductOrder> productOrders;
+    private final ProductsController controller;
+    public List<IndividualProductOrder> individualProductOrders;
     public BigDecimal totalPrice;
 
     public OfferContext(ProductsController controller) {
         this.controller = controller;
-        productOrders = new ArrayList<>();
+        individualProductOrders = new ArrayList<>();
         totalPrice = BigDecimal.ZERO;
     }
 
-    public Long getTodaysOrderCount(String productName) {
+    public Long getOrderCountToday(String productName) {
         return controller.getTodaysOrderCount(productName);
     }
 }
